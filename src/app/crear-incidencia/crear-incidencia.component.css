@@ -1,0 +1,9 @@
+/* Opcional: Ajustar el tamaño de los botones si es necesario */
+.btn {
+    width: 48%;
+  }
+  
+  /* Opcional: Mejorar la apariencia del texto de error */
+  .text-danger {
+    font-size: 0.875em;
+  }
