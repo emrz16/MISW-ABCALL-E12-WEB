@@ -1,3 +1,105 @@
-<p>
-  board works!
-</p>
+
+  
+  <div class="row" style="background-color: white; height: 100%;margin-left: 10px;">
+    <div class="container-fluid">
+      <div class="row" style="height: 100%;">
+        <div class="col-md-8" >
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-8">
+                <h3>Este Mes</h3>
+              </div>
+              <div class="col-md-4" style=" text-align: right; ">
+                <h3>filtro</h3>  
+              </div>
+            </div>
+            
+            <div class="row stats" style=" margin-top: 10%;">
+              <div class="col-sm-9 col-md-4 mb-0">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Incidentes resueltos</h5>
+                    <p class="card-text display-4">{{board.stats.total_closed_incidents}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Incidentes abiertos</h5>
+                    <p class="card-text display-4">{{board.stats.total_open_incidents}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">N. llamadas de entrada</h5>
+                    <p class="card-text display-4">3</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">N. llamadas de salida</h5>
+                    <p class="card-text display-4">3</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Tiempo promedio</h5>
+                    <p class="card-text display-4">{{board.stats.average_resolution_time}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Nivel de cumplimiento</h5>
+                    <p class="card-text display-4">90%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="botones" style="margin-top: 30%;">
+                <button class="btn btn-primary me-2">Descargar informe</button>
+                <button class="btn btn-primary">Generar análisis inteligente</button>
+            </div>
+          </div>
+
+        </div>
+    
+        <div class="col-md-4" style="background-color: lightgrey;">
+          <div class="col-md-12">
+            <div class="card mt-3 mt-md-10">
+              <div class="card-body text-center">
+                <p>Hola! Ya tenemos disponible analítica predictiva, haz click en “Activar”</p>
+                <button class="btn btn-light btn-lg">Activar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--
+
+
+<div class="container-fluid-md-12">
+  
+
+
+
+ 
+  <section style="background-color: red; height: 100%;">
+    
+  </section>
+  
+</div>
+
+-->
