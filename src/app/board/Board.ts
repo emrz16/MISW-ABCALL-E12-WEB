@@ -35,7 +35,7 @@ export interface Stats {
   
   export interface Board {
     client: Client;
-    incidents: any[]; // Si tienes la estructura de los incidentes, puedes cambiar "any" por su tipo correspondiente
+    incidents: any[];
     stats: Stats;
     ia_response: IaResponse;
   }

@@ -10,7 +10,7 @@
                 <h3>Este Mes</h3>
               </div>
               <div class="col-md-4" style=" text-align: right; ">
-                <h3>filtro</h3>  
+                <h3>logo filtro</h3>  
               </div>
             </div>
             
@@ -35,7 +35,7 @@
                 <div class="card text-center">
                   <div class="card-body">
                     <h5 class="card-title">N. llamadas de entrada</h5>
-                    <p class="card-text display-4">3</p>
+                    <p class="card-text display-4">{{board.stats.total_open_incidents}}</p>
                   </div>
                 </div>
               </div>
@@ -43,7 +43,7 @@
                 <div class="card text-center">
                   <div class="card-body">
                     <h5 class="card-title">N. llamadas de salida</h5>
-                    <p class="card-text display-4">3</p>
+                    <p class="card-text display-4">{{board.stats.total_open_incidents}}</p>
                   </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@
                 <div class="card text-center">
                   <div class="card-body">
                     <h5 class="card-title">Tiempo promedio</h5>
-                    <p class="card-text display-4">{{board.stats.average_resolution_time}}</p>
+                    <p class="card-text display-4">{{board.stats.average_resolution_time || '0 hrs'}}</p>
                   </div>
                 </div>
               </div>
@@ -60,6 +60,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Nivel de cumplimiento</h5>
                     <p class="card-text display-4">90%</p>
+                    <!-- <p class="card-text display-4">{{board.stats.compliance_rate || 0 }}</p> -->
                   </div>
                 </div>
               </div>
