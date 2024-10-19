@@ -1,0 +1,27 @@
+/* Estilos opcionales */
+ .header {
+    background-color: white;
+  }
+  
+  .logout {
+    font-size: 16px;
+  }
+  
+  .card {
+    background-color: #d3d3d3;
+  }
+  
+  .card-title {
+    font-size: 16px;
+  }
+  
+  .card-text {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  .btn-light {
+    background-color: #e4daff;
+    color: #291563;
+  }
+  

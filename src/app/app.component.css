@@ -1,0 +1,25 @@
+* [lang^=en] {
+    color: green;
+  }
+  
+  
+
+  
+  header {
+    position:fixed;
+    width:100%;
+    top: 0px;
+  }
+  
+  footer{
+    position:fixed;
+    bottom: 0px;
+    background-color:white;
+    color: black;
+    width:100%;
+    align-items: center;
+    margin-top: 8px;
+    padding: 8px;
+    line-height: 20px;
+  }
+  
