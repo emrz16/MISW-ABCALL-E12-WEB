@@ -63,17 +63,17 @@
         <!-- Canal -->
         <div class="mb-4">
           <label for="canal" class="form-label">Canal</label>
-          <input
-            type="text"
-            id="canal"
-            class="form-control"
-            formControlName="canal"
-            placeholder="Ingrese el canal"
-          />
+          <select id="canal" class="form-control" formControlName="canal">
+            <option value="" disabled selected>Seleccione el canal</option>
+            <option value="email">Email</option>
+            <option value="phone">Telefono</option>
+            <option value="chat">Chat</option>
+          </select>
           <div class="text-danger mt-1" *ngIf="incidenciaForm.get('canal')?.touched && incidenciaForm.get('canal')?.invalid">
             El canal es requerido.
           </div>
         </div>
+
         <div class="d-flex justify-content-between">
           <button type="submit" class="btn btn-success">
             Guardar

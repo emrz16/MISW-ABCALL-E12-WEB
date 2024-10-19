@@ -1,0 +1,7 @@
+ul.list-group li {
+    cursor: pointer;
+  }
+  
+  ul.list-group li:hover {
+    background-color: #f1f1f1;
+  }

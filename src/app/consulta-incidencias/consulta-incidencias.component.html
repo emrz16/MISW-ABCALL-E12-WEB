@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <div class="row">
+    <div class="col text-center">
+        <h2>Incidencias</h2>
+    </div>
+    </div>
+  <div class="row">
+    <!-- Listado de incidentes -->
+    <div class="col-md-9">
+      <h3>Listado de Incidentes</h3>
+      <ul class="list-group mb-4">
+        <li class="list-group-item" *ngFor="let incidente of incidentesFiltrados | paginate: { itemsPerPage: 5, currentPage: page }">
+          {{ incidente.nombre }}
+        </li>
+      </ul>
+      <!-- Paginación -->
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+        <!-- Filtro de estados -->
+    <div class="col-md-3">
+      <h5>Filtrar por estado</h5>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let estado of estados" (click)="filtrarPorEstado(estado)">
+          {{ estado }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
