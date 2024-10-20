@@ -15,21 +15,20 @@
       </div>
 
       <form [formGroup]="incidenciaForm" (ngSubmit)="guardar()">
-        <!-- Título de Incidente -->
+        <!-- User id -->
         <div class="mb-3">
-          <label for="titulo" class="form-label">Título de incidente</label>
+          <label for="user_id" class="form-label">Usuario</label>
           <input
             type="text"
-            id="titulo"
+            id="user_id"
             class="form-control"
-            formControlName="titulo"
-            placeholder="Ingrese el título del incidente"
+            formControlName="user_id"
+            placeholder="Ingrese el id del usuario"
           />
-          <div class="text-danger mt-1" *ngIf="incidenciaForm.get('titulo')?.touched && incidenciaForm.get('titulo')?.invalid">
-            El título es requerido.
+          <div class="text-danger mt-1" *ngIf="incidenciaForm.get('user_id')?.touched && incidenciaForm.get('user_id')?.invalid">
+            El usuario es requerido.
           </div>
         </div>
-
         <!-- Descripción del Incidente -->
         <div class="mb-3">
           <label for="descripcion" class="form-label">Descripción del incidente</label>
@@ -45,20 +44,7 @@
           </div>
         </div>
 
-        <!-- Tipo de Incidente -->
-        <div class="mb-3">
-          <label for="tipo" class="form-label">Tipo de incidente</label>
-          <input
-            type="text"
-            id="tipo"
-            class="form-control"
-            formControlName="tipo"
-            placeholder="Ingrese el tipo de incidente"
-          />
-          <div class="text-danger mt-1" *ngIf="incidenciaForm.get('tipo')?.touched && incidenciaForm.get('tipo')?.invalid">
-            El tipo de incidente es requerido.
-          </div>
-        </div>
+
 
         <!-- Canal -->
         <div class="mb-4">

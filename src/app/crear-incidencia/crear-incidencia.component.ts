@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IncidenciaService, Incidencia } from '../incidencia.service'; // Ajusta la ruta si es necesario
-import { AuthService } from '../auth.service'; // Asegúrate de tener este servicio si lo usas
+import { IncidenciaService, Incidencia } from '../incidencia.service';
+import { AgentsAuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,15 +17,15 @@ export class CrearIncidenciaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private incidenciaService: IncidenciaService,
-    private authService: AuthService,
+    private authService: AgentsAuthService,
     private router: Router
   ) {
     this.incidenciaForm = this.fb.group({
-      titulo: ['', Validators.required],
+      user_id: ['', Validators.required],
       descripcion: ['', Validators.required],
-      tipo: ['', Validators.required],
       canal: ['', Validators.required]
     });
+    this.authService.login("test@example.com", "securepassword")
   }
 
   ngOnInit(): void { }
@@ -33,16 +33,16 @@ export class CrearIncidenciaComponent implements OnInit {
   guardar(): void {
     if (this.incidenciaForm.valid) {
       const formValues = this.incidenciaForm.value;
-
+      const agent_id = localStorage.getItem("agent_id") || '';
+      console.log(formValues);
       const nuevaIncidencia: Incidencia = {
-        agent_id: this.authService.getAgentId(), 
+        agent_id: agent_id, 
         description: formValues.descripcion,
         date: new Date().toISOString().split('T')[0],
         registration_medium: formValues.canal,
-        user_id: this.authService.getUserId(), 
-        client_id: this.authService.getClientId()
+        user_id: formValues.user_id, 
+        client_id: ""
       };
-
       this.incidenciaService.crearIncidencia(nuevaIncidencia).subscribe({
         next: (response) => {
           console.log('Incidencia guardada:', response);
