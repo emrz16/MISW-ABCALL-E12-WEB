@@ -24,4 +24,9 @@
     background-color: #e4daff;
     color: #291563;
   }
+
+  .btn-dark {
+    background-color: #291563;
+    color: white;
+  }
   
