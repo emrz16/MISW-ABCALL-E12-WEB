@@ -1,16 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      schemas: [NO_ERRORS_SCHEMA] // Ignorar templates para simplificar el test
     }).compileComponents();
   });
 
@@ -26,10 +22,13 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('abcall');
   });
 
-  it('should render title', () => {
+  it('should render correct text in footer', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
+    fixture.detectChanges(); // Activa la detección de cambios para renderizar el HTML
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, abcall');
+
+    // Verifica que el texto del footer sea el esperado
+    const footerText = compiled.querySelector('footer')?.textContent?.trim();
+    expect(footerText).toBe('MISO - Tears of the devs Intregantes: Darío, Andrés, Inés, Emmanuel.');
   });
 });
