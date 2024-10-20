@@ -12,13 +12,19 @@ export interface Incidencia {
   client_id: string;
 }
 
+export interface IncidentSuggestionResponse{
+  incident_id: string,
+  description: string,
+  possible_solution: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class IncidenciaService {
 
   private apiUrl = 'http://localhost:5000/incidents';
-
+  private apiUrlSuggestions = 'http://localhost:5007/incident/';
   constructor(private http: HttpClient) { }
 
   // Método para crear una nueva incidencia
@@ -29,6 +35,17 @@ export class IncidenciaService {
       'Authorization': `Bearer ${token}`
     });
     return this.http.post<any>(this.apiUrl, incidencia, {headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getIncidentSuggestion(incident_id: string): Observable<IncidentSuggestionResponse>{
+    const token = localStorage.getItem("token");
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<IncidentSuggestionResponse>(this.apiUrlSuggestions + incident_id, {headers})
       .pipe(
         catchError(this.handleError)
       );

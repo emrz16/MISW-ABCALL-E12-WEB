@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IncidenciaService, Incidencia } from '../incidencia.service';
 import { AgentsAuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-crear-incidencia',
@@ -13,6 +14,7 @@ export class CrearIncidenciaComponent implements OnInit {
   incidenciaForm: FormGroup;
   mensajeExito: string = '';
   mensajeError: string = '';
+  possibleSolution: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -47,7 +49,12 @@ export class CrearIncidenciaComponent implements OnInit {
         next: (response) => {
           console.log('Incidencia guardada:', response);
           this.mensajeExito = 'Incidencia creada exitosamente.';
-          this.incidenciaForm.reset();
+          //this.incidenciaForm.reset();
+          this.incidenciaService.getIncidentSuggestion(response["id"]).subscribe({
+            next: (response) => {
+              this.possibleSolution = response.possible_solution;
+            }
+          })
           // this.router.navigate(['/ruta-destino']);
         },
         error: (error) => {
