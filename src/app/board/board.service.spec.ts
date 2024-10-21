@@ -46,10 +46,15 @@ describe('BoardService', () => {
         plan: null
       },
       stats: {
+        average_response_time: '15 Mins',  
+        total_phone_incidents: 5,  
+        total_email_incidents: 7,  
+        total_chat_incidents: 9,  
+        compliance_rate: 50, 
         total_incidents: 10,
         total_open_incidents: 5,
         total_closed_incidents: 3,
-        average_resolution_time: '55 %'
+        average_resolution_time: '1 hour'
       },
       ia_response: {
         msg: 'Success'

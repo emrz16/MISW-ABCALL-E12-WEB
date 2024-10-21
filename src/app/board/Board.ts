@@ -8,26 +8,19 @@ export interface Client {
     plan: string | null;
   }
   
-  export interface Stats {
-    total_incidents: number;
-    total_open_incidents: number;
-    total_closed_incidents: number;
-    average_resolution_time: string;
-  }
 
-  /*
 export interface Stats {
   total_incidents: number;
   total_open_incidents: number;
   total_closed_incidents: number;
   average_resolution_time: string;
-  average_response_time: string;  // Nuevo campo para tiempo promedio de respuesta
-  total_phone_incidents: number;  // Nuevo campo para incidentes por teléfono
-  total_email_incidents: number;  // Nuevo campo para incidentes por email
-  total_chat_incidents: number;   // Nuevo campo para incidentes por chat
-  compliance_rate: number;        // Nuevo campo para tasa de cumplimiento
+  average_response_time: string;  
+  total_phone_incidents: number;  
+  total_email_incidents: number;  
+  total_chat_incidents: number;  
+  compliance_rate: number;      
 }
-  */
+  
   
   export interface IaResponse {
     msg: string;
