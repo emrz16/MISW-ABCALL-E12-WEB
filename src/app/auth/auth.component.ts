@@ -17,7 +17,7 @@ export class AuthComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private clientsAuthService: ClientsAuthService,private router: Router) {
     this.loginForm = this.fb.group({
-      email: ['client4@test.com', [Validators.required, Validators.email]],  // Valor por defecto para email
+      email: ['client@test.com', [Validators.required, Validators.email]],  // Valor por defecto para email
       password: ['123456789', [Validators.required, Validators.minLength(8)]] // Valor por defecto para password
     });
   }
