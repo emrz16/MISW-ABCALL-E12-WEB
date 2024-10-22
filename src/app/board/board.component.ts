@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BoardService } from './board.service';
 import { Board } from './Board';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 
 @Component({
@@ -16,14 +18,14 @@ export class BoardComponent implements OnInit {
   newMessage: string = ''; 
   currentTime: string = '';
 
+
+
   constructor(private boardService:BoardService) { }
 
 
   ngOnInit() {
 
     this.updateCurrentTime(); 
-
-
     let token  = localStorage.getItem('token');
     let client_id = localStorage.getItem('client_id');
     this.getBoard(token, client_id);
@@ -68,6 +70,36 @@ export class BoardComponent implements OnInit {
     const delays = [2000, 3000, 4000, 5000]; // Los posibles tiempos de retraso
     const randomIndex = Math.floor(Math.random() * delays.length); // Seleccionar un índice aleatorio
     return delays[randomIndex]; // Retornar el valor aleatorio
+  }
+
+
+  generatePDF() {
+    const doc = new jsPDF();
+
+    doc.setFontSize(22); 
+    doc.setTextColor(0, 102, 204); 
+    doc.text('Client Report', 10, 10); 
+  
+    doc.setFontSize(12);
+    doc.setTextColor(0, 0, 0); 
+ 
+    doc.text(`Client: ${this.board.client.name}`, 10, 20);
+    doc.text(`Id: ${this.board.client.id}`, 10, 30);
+    doc.text(`Email: ${this.board.client.email}`, 10, 40);
+    doc.text(`Plan: ${this.board.client.plan}`, 10, 50);
+
+    (doc as any).autoTable({
+      startY: 60,  
+      head: [['ID', 'Description', 'Status']],  
+      body: this.board.incidents.map(incident => [
+        incident.id.toString(),  
+        incident.description,
+        incident.status
+      ]),
+    });
+
+    // Guardar el PDF
+    doc.save('report.pdf');
   }
 
 }
