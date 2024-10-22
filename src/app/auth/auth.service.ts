@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
@@ -25,12 +25,12 @@ interface LoginAgentQuestionResponse{
   providedIn: 'root'
 })
 export class ClientsAuthService {
-  private apiUrl: string = environment.baseUrl + '/clients/login';
+  private apiUrl: string = environment.baseUrl + 'clients/login';
 
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<LoginResponse> {
-   
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -49,12 +49,12 @@ export class ClientsAuthService {
   providedIn: 'root'
 })
 export class AgentsAuthService {
-  private apiUrl: string = environment.baseUrl + '/agents/login';
-  private securityAnswerUrl: string = environment.baseUrl + '/agents/verify-security-answer';
+  private apiUrl: string = environment.baseUrl + 'agents/login';
+  private securityAnswerUrl: string = environment.baseUrl + 'agents/verify-security-answer';
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string){
-   
+
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
