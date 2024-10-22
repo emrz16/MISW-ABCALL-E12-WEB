@@ -43,7 +43,7 @@ export class CrearIncidenciaComponent implements OnInit {
         date: new Date().toISOString().split('T')[0],
         registration_medium: formValues.canal,
         user_id: formValues.user_id, 
-        client_id: ""
+        client_id: "0c0c564b-3256-45ad-848a-17f32242a22f"
       };
       this.incidenciaService.crearIncidencia(nuevaIncidencia).subscribe({
         next: (response) => {
@@ -62,6 +62,7 @@ export class CrearIncidenciaComponent implements OnInit {
           this.mensajeError = error;
         }
       });
+      this.limpiarForm();
     } else {
       this.incidenciaForm.markAllAsTouched();
     }
@@ -73,4 +74,11 @@ export class CrearIncidenciaComponent implements OnInit {
     this.mensajeError = '';
     console.log('Formulario cancelado');
   }
+  
+  limpiarForm(): void {
+    this.incidenciaForm.reset();
+    this.mensajeExito = '';
+    this.mensajeError = '';
+  }
+
 }
