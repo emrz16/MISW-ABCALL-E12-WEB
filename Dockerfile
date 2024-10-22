@@ -4,7 +4,7 @@ COPY package*.json ./
 RUN npm install -g @angular/cli
 RUN npm install
 COPY . .
-RUN ng build --configuration=production --base-href
+RUN ng build --configuration=production --base-href=/
 
 FROM nginx:alpine
 COPY --from=builder app/dist/abcall/browser /usr/share/nginx/html
