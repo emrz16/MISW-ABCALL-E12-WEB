@@ -26,8 +26,6 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
 
     this.updateCurrentTime(); 
-
-
     let token  = localStorage.getItem('token');
     let client_id = localStorage.getItem('client_id');
     this.getBoard(token, client_id);

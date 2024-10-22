@@ -15,6 +15,8 @@ export class CrearIncidenciaComponent implements OnInit {
   mensajeExito: string = '';
   mensajeError: string = '';
   possibleSolution: string = '';
+  client_token = ''  
+  client_id = '';
 
   constructor(
     private fb: FormBuilder,
@@ -30,9 +32,13 @@ export class CrearIncidenciaComponent implements OnInit {
     this.authService.login("test@example.com", "securepassword")
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.client_token = localStorage.getItem('token') || '';
+    this.client_id = localStorage.getItem('client_id') || '';
+   }
 
   guardar(): void {
+
     if (this.incidenciaForm.valid) {
       const formValues = this.incidenciaForm.value;
       const agent_id = localStorage.getItem("agent_id") || '';
@@ -43,7 +49,7 @@ export class CrearIncidenciaComponent implements OnInit {
         date: new Date().toISOString().split('T')[0],
         registration_medium: formValues.canal,
         user_id: formValues.user_id, 
-        client_id: "0c0c564b-3256-45ad-848a-17f32242a22f"
+        client_id: this.client_id
       };
       this.incidenciaService.crearIncidencia(nuevaIncidencia).subscribe({
         next: (response) => {
@@ -62,7 +68,7 @@ export class CrearIncidenciaComponent implements OnInit {
           this.mensajeError = error;
         }
       });
-      this.limpiarForm();
+      //this.limpiarForm();
     } else {
       this.incidenciaForm.markAllAsTouched();
     }
