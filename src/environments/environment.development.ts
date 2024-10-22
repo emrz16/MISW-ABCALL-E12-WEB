@@ -1,5 +1,5 @@
 const baseUrl =
- 'https://api-gateway-649096178068.us-central1.run.app/';
+ 'http://localhost:5000/';
 
 export const environment = {
  production: false,

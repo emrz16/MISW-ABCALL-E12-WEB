@@ -8,9 +8,4 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent {
   title = 'abcall';
-
-  ngOnInit() {
-    console.log('Production:', environment.production);
-    console.log('Base URL:', environment.baseUrl);
-  }
 }
