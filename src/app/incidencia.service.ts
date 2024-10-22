@@ -25,7 +25,7 @@ export interface IncidentSuggestionResponse{
 export class IncidenciaService {
 
   private apiUrl = environment.baseUrl + 'incidents';
-  private apiUrlSuggestions = environment.baseUrl + 'incident/';
+  private apiUrlSuggestions = environment.baseUrl + 'incidents/';
   constructor(private http: HttpClient) { }
 
   // Método para crear una nueva incidencia
@@ -46,7 +46,7 @@ export class IncidenciaService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<IncidentSuggestionResponse>(this.apiUrlSuggestions + incident_id, {headers})
+    return this.http.get<IncidentSuggestionResponse>(this.apiUrlSuggestions + incident_id + "/solution", {headers})
       .pipe(
         catchError(this.handleError)
       );
