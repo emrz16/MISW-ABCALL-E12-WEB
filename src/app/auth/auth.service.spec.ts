@@ -8,7 +8,7 @@ describe('ClientsAuthService', () => {
   let service: ClientsAuthService;
   let httpMock: HttpTestingController;
   let httpClient: HttpClient;
-  const mockApiUrl = `${environment.baseUrl}/clients/login`;
+  const mockApiUrl = `${environment.baseUrl}clients/login`;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

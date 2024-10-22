@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../environments/environment.development';
 
 export interface Incidencia {
   agent_id: string;
@@ -23,8 +24,8 @@ export interface IncidentSuggestionResponse{
 })
 export class IncidenciaService {
 
-  private apiUrl = 'http://localhost:5000/incidents';
-  private apiUrlSuggestions = 'http://localhost:5007/incident/';
+  private apiUrl = environment.baseUrl + 'incidents';
+  private apiUrlSuggestions = environment.baseUrl + 'incident/';
   constructor(private http: HttpClient) { }
 
   // Método para crear una nueva incidencia
