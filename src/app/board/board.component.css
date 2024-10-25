@@ -1,0 +1,64 @@
+/* Estilos opcionales */
+ .header {
+    background-color: white;
+  }
+  
+  .logout {
+    font-size: 16px;
+  }
+  
+  .card {
+    background-color: #d3d3d3;
+  }
+  
+  .card-title {
+    font-size: 16px;
+  }
+  
+  .card-text {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  .btn-light {
+    background-color: #e4daff;
+    color: #291563;
+  }
+
+  .btn-dark {
+    background-color: #291563;
+    color: white;
+  }
+  
+
+  /* Define la ventana del chat con tamaño fijo */
+.chat-window {
+  height: 70vh; /* Altura fija */
+  width: 100%; /* Ancho completo */
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  overflow-y: auto; /* Habilita el scroll vertical */
+}
+
+/* Estilo de los mensajes dentro del chat */
+.chat-message {
+  background-color: white;
+  width: 95%;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  word-wrap: break-word; /* Permite que las palabras largas se dividan */
+}
+
+.message-timestamp {
+  font-size: 10px;
+  color: black;
+}
+
+.message-username {
+  font-size: 10px;
+  color: black;
+}

@@ -1,0 +1,61 @@
+name: CI/CD para despliegue en Cloud run
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v3
+
+    - name: Configurar la autenticación de Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+    - name: Configurar gcloud
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        install_components: 'gke-gcloud-auth-plugin'
+
+    - name: Configurar Docker para Artifact Registry
+      run: |
+        gcloud auth configure-docker us-central1-docker.pkg.dev
+
+    - name: Definir etiqueta única
+      id: tag
+      run: echo "TAG=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
+    - name: Construir y empujar imágenes Docker
+      run: |
+        SERVICE_NAME=front-web
+        echo "Construyendo y empujando la imagen para $SERVICE_NAME con la etiqueta $TAG..."
+
+        docker build --platform linux/amd64 -t us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/abcall/$SERVICE_NAME:${TAG} .
+        docker push us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/abcall/$SERVICE_NAME:${TAG}
+
+
+    - name: Desplegar a Cloud Run
+      run: |
+        SERVICE_NAME=front-web
+        IMAGE_URL=us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/abcall/$SERVICE_NAME:${TAG}
+
+        echo "Desplegando $SERVICE_NAME a Cloud Run con la imagen $IMAGE_URL..."
+
+        gcloud run deploy front-web-latest \
+          --image $IMAGE_URL \
+          --region us-central1 \
+          --platform managed \
+          --allow-unauthenticated \
+          --project ${{ secrets.GCP_PROJECT_ID }} \
+          --port 80 \
+          --timeout 900

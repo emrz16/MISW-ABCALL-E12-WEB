@@ -1,0 +1,188 @@
+
+  
+  <div class="row" style="background-color: white; height: 100%;margin-left: 10px;">
+    <div class="container-fluid">
+      <div class="row" style="height: 100%;">
+        <div class="col-md-8" >
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-8">
+                <h3>Este Mes</h3>
+              </div>
+              <div class="col-md-4" style=" text-align: right; ">
+                <img src="assets/images/filter-icon.png" alt="Filtro" width="24" height="24">
+              </div>
+              
+            </div>
+            
+            <div class="row stats" style=" margin-top: 10%;">
+              <div class="col-sm-9 col-md-4 mb-0">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Incidentes resueltos</h5>
+                    <p class="card-text display-4">{{board.stats.total_closed_incidents}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Incidentes abiertos</h5>
+                    <p class="card-text display-4">{{board.stats.total_open_incidents}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Total incidentes</h5>
+                    <p class="card-text display-4">{{board.stats.total_incidents}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Compliance Rate</h5>
+                    <p class="card-text display-4">{{board.stats.compliance_rate * 100| number:'1.2-2' }} %</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Tiempo promedio resolucion</h5>
+                    <p class="card-text display-4">{{board.stats.average_resolution_time || '0 hrs'}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Tiempo promedio de respuesta</h5>
+                    <p class="card-text display-4">{{board.stats.average_response_time || 0 }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Incidentes por telefono</h5>
+                    <p class="card-text display-4">{{board.stats.total_phone_incidents || 0 }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Incidentes por Email</h5>
+                    <p class="card-text display-4">{{board.stats.total_email_incidents || 0 }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Incidentes por Chat</h5>
+                    <p class="card-text display-4">{{board.stats.total_chat_incidents || 0 }}</p>
+                  </div>
+                </div>
+              </div>
+
+              
+
+              <div class="botones" style="margin-top: 5%;">
+                <button (click)="generatePDF()" class="btn btn-dark me-2">Descargar informe</button>
+                <button (click)="onActivateClick()" class="btn btn-dark">Generar análisis inteligente</button>
+            </div>
+            </div>
+    
+            
+          </div>
+
+        </div>
+    
+        <div class="col-md-4" style="background-color: lightgrey;">
+          <div class="col-md-12">
+            <div *ngIf="isDivVisible" class="card mt-3 mt-md-10">
+              <div  class="card-body text-center">
+                <p>Hola! Ya tenemos disponible analítica predictiva, haz click en “Activar”</p>
+                <button (click)="onActivateClick()" class="btn btn-light btn-lg">Activar</button>
+              </div>
+            </div>
+
+            
+                <!-- Contenedor del chat con tamaño fijo y scroll -->
+                 <div *ngIf="!isDivVisible">
+                  <div  class="chat-window" >
+                    <!-- Lista de mensajes de la conversación -->
+                    <div *ngFor="let message of messages" >
+                      <div class="row"  >
+                        
+                        <div *ngIf="message.tipo === 'IA'" class="ia-message">
+                          <div class="row">
+                            <div class="col-md-9" style="text-align: right; margin-left: 0px;">
+                              <img src="assets/images/message.svg" alt="Usuario" width="24" height="24">
+                            </div>
+                            <div class="col-md-1">
+                              <div class="message-header" >
+                                <span class="message-username" >Livechat</span>
+                                <span class="message-timestamp" style="size: 8">{{ currentTime }}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div *ngIf="message.tipo === 'USER'" class="user-message">
+                          <div class="row">
+                          <div class="col-md-1" style="padding-left: 10px; padding-right: 10px;">
+                            <img src="assets/images/message.svg" alt="Usuario" width="24" height="24">
+                          </div>
+                          <div class="col-md-4" style="margin-left: 10px; ;">
+                            <div class="message-header">
+                              <span class="message-username">Livechat</span>
+                              <span class="message-timestamp" style="size: 8">{{ currentTime }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+
+
+                        <div class="chat-message">
+                          {{ message.mensaje }}
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+    
+                  <!-- Input para escribir nuevos mensajes -->
+                  <div class="row" >
+                    <div class="col-md-8" >
+                      <input [(ngModel)]="newMessage" placeholder="Escribe tu mensaje" class="form-control" style="margin-top: 5%;" />
+                    </div>
+                    <div class="col-md-4" >
+                      <button class="btn  mt-2"  (click)="sendMessage()">
+                        <img src="assets/images/attachment.svg" alt="Icono" width="40" height="40">
+                      </button>  
+                    <button class="btn  mt-2"  (click)="sendMessage()">
+                      <img src="assets/images/send.svg" alt="Icono" width="40" height="40">
+                    </button>
+                    </div>
+                  </div>
+                 </div>
+              
+            
+
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
