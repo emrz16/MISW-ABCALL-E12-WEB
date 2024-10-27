@@ -10,8 +10,8 @@
       
       <input type="email" id="email" formControlName="email" class="input-field" placeholder="Correo">
       <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-        <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
-        <small *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email.</small>
+        <small class="error-message" *ngIf="loginForm.get('email')?.errors?.['required']">Email es requerido.</small>
+        <small class="error-message" *ngIf="loginForm.get('email')?.errors?.['email']">Ingresa un email valido.</small>
       </div>
     </div>
 
@@ -19,23 +19,28 @@
       <h5 class="textos">Contraseña</h5>
       <input type="password" id="password" formControlName="password" class="input-field" placeholder="Contraseña" >
       <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-        <small *ngIf="loginForm.get('password')?.errors?.['required']">Contraseña es requerido.</small>
-        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Contraseña debe contener almenos 8 caractéres.</small>
+        <small class="error-message" *ngIf="loginForm.get('password')?.errors?.['required']">Contraseña es requerido.</small>
+         <!--<small *ngIf="loginForm.get('password')?.errors?.['minlength']">Contraseña debe contener almenos 8 caractéres.</small>-->
       </div>
     </div>
+
+    <!--
+
+    <div *ngIf="error" class="error-message">
+      <h5>{{ error }}</h5>
+    </div>
+    -->
 
     <button class="login-button" type="submit" [disabled]="loginForm.invalid">Ingresar</button>
 
     <div class="links">
-      <a href="#" class="link">Registro</a>
-      <a href="#" class="link">Recuperar contraseña</a>
+      <a href="/clients/register" class="link">Registro</a>
+      <a href="/clients/recover" class="link">Recuperar contraseña</a>
     </div>
 
   </form>
       
   
 
-  <div *ngIf="error" class="error-message">
-    {{ error }}
-  </div>
+
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientsAuthService } from '../../auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,7 +15,11 @@ export class ClientLoginComponent implements OnInit {
   loginForm: FormGroup;
   error: string | null = null;
 
-  constructor(private fb: FormBuilder, private clientsAuthService: ClientsAuthService,private router: Router) {
+  constructor(private fb: FormBuilder,
+     private clientsAuthService: ClientsAuthService,
+     private router: Router,
+    private toastr: ToastrService
+  ) {
     this.loginForm = this.fb.group({
       email: ['client@test.com', [Validators.required, Validators.email]],  
       password: ['123456789', [Validators.required, Validators.minLength(8)]] 
@@ -22,6 +27,7 @@ export class ClientLoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   login() {
@@ -39,11 +45,11 @@ export class ClientLoginComponent implements OnInit {
         },
         (error) => {
           console.error('Error al iniciar sesión:', error);
-          this.error = 'Login failed. Please check your credentials.';
+          this.toastr.error('Ha ocurrido un error. verifíca tus credenciales.', 'Error de inicio de sesión');
         }
       );
     } else {
-      this.error = 'Please fill in the form correctly.';
+      this.toastr.error('Por favor llena el formulario correctamente.', 'Error de Validación');
     }
   }
 

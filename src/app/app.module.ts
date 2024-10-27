@@ -11,12 +11,16 @@ import { AuthComponent } from './auth/auth.component';
 import { CommonModule } from '@angular/common';
 import { BoardComponent } from './board/board.component';
 import { AuthModule } from './auth/auth.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ClientRegisterComponent } from './client/client-register/client-register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CrearIncidenciaComponent,
-    BoardComponent
+    BoardComponent,
+    ClientRegisterComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +30,13 @@ import { AuthModule } from './auth/auth.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      timeOut: 7000, 
+      closeButton: true,
+      preventDuplicates: true
+    }),
     AuthModule
   ],
   providers: [],
