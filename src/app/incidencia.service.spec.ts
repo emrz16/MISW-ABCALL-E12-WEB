@@ -17,7 +17,7 @@ describe('IncidenciaService', () => {
   });
 
   afterEach(() => {
-    httpMock.verify(); 
+    httpMock.verify();
   });
 
   it('should be created', () => {
@@ -43,7 +43,7 @@ describe('IncidenciaService', () => {
     const req = httpMock.expectOne(service['apiUrl']);
     expect(req.request.method).toBe('POST');
     expect(req.request.headers.get('Authorization')).toContain('Bearer');
-    req.flush(mockResponse); 
+    req.flush(mockResponse);
   });
 
   it('should call getIncidentSuggestion and return suggestion', () => {
@@ -59,10 +59,10 @@ describe('IncidenciaService', () => {
       expect(suggestion).toEqual(mockSuggestion);
     });
 
-    const req = httpMock.expectOne(service['apiUrlSuggestions'] + incidentId);
+    const req = httpMock.expectOne(service['apiUrlSuggestions'] + incidentId + "/solution");
     expect(req.request.method).toBe('GET');
     expect(req.request.headers.get('Authorization')).toContain('Bearer');
-    req.flush(mockSuggestion); 
+    req.flush(mockSuggestion);
   });
 
   it('should handle errors', () => {
