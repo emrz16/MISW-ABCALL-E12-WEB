@@ -78,7 +78,7 @@ export class BoardComponent implements OnInit {
   
   onActivateClick(): void {
     this.isDivVisible = !this.isDivVisible;  
-    this.messages.push({ tipo: "IA", mensaje: this.board.ia_response.msg }); 
+    //this.messages.push({ tipo: "IA", mensaje: this.board.ia_response.msg }); 
       this.newMessage = ''; 
   }
 

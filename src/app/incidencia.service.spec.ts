@@ -2,10 +2,13 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { IncidenciaService, Incidencia, IncidentSuggestionResponse } from './incidencia.service';
 import { HttpHeaders } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 describe('IncidenciaService', () => {
   let service: IncidenciaService;
   let httpMock: HttpTestingController;
+  const mockApiUrl = `${environment.baseUrl}`+ 'incidents';
+  const apiUrlSuggestions = `${environment.baseUrl}`+ 'incidents/';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -40,7 +43,7 @@ describe('IncidenciaService', () => {
       expect(response).toEqual(mockResponse);
     });
 
-    const req = httpMock.expectOne(service['apiUrl']);
+    const req = httpMock.expectOne(mockApiUrl);
     expect(req.request.method).toBe('POST');
     expect(req.request.headers.get('Authorization')).toContain('Bearer');
     req.flush(mockResponse);
@@ -59,7 +62,7 @@ describe('IncidenciaService', () => {
       expect(suggestion).toEqual(mockSuggestion);
     });
 
-    const req = httpMock.expectOne(service['apiUrlSuggestions'] + incidentId + "/solution");
+    const req = httpMock.expectOne(apiUrlSuggestions + incidentId + '/solution');
     expect(req.request.method).toBe('GET');
     expect(req.request.headers.get('Authorization')).toContain('Bearer');
     req.flush(mockSuggestion);
@@ -81,7 +84,7 @@ describe('IncidenciaService', () => {
       }
     });
 
-    const req = httpMock.expectOne(service['apiUrl']);
+    const req = httpMock.expectOne(mockApiUrl);
     req.error(mockError);  // Simula un error de red
   });
 });

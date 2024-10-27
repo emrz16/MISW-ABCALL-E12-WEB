@@ -2,7 +2,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
 import { ClientsAuthService } from './auth.service';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 describe('ClientsAuthService', () => {
   let service: ClientsAuthService;
