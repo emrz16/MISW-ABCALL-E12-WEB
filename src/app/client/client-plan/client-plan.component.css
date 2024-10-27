@@ -1,0 +1,16 @@
+.plan-card {
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .selected-plan {
+    background-color: #e6ccff; /* Morado claro */
+    border: 2px solid #9933ff; /* Borde morado */
+  }
+
+
+  .btn-morado {
+    background-color: #9933ff; /* Morado */
+    border-color: #9933ff;
+    color: white;
+  }

@@ -1,0 +1,12 @@
+.client-board {
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  .card-header {
+    font-size: 1.25rem;
+  }
+  
+  .card-body p {
+    color: #555;
+  }

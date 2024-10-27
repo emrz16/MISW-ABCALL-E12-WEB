@@ -1,0 +1,49 @@
+<div class="card shadow-sm client-board">
+  <div class="card-header bg-primary text-white text-center">
+    <h5>Detalles del Cliente</h5>
+  </div>
+  <div *ngIf="clientplan" class="card-body">
+    <div class="row mb-3">
+      <div class="col">
+        <strong>ID del Cliente:</strong>
+        <p class="mb-0">{{ clientplan.id }}</p>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <strong>Nombre:</strong>
+        <p class="mb-0">{{ clientplan.name }}</p>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <strong>Email:</strong>
+        <p class="mb-0">{{ clientplan.email }}</p>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <strong>Nombre de la Empresa:</strong>
+        <p class="mb-0">{{ clientplan.company_name }}</p>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <strong>Fecha de Creación:</strong>
+        <p class="mb-0">{{ clientplan.created_at | date:'medium' }}</p>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <strong>Última Actualización:</strong>
+        <p class="mb-0">{{ clientplan.updated_at | date:'medium' }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <strong>ID del Plan:</strong>
+        <p class="mb-0">{{ clientplan.plan }}</p>
+      </div>
+    </div>
+  </div>
+</div>

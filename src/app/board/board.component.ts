@@ -32,8 +32,9 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
 
     this.updateCurrentTime(); 
-    this.token  = localStorage.getItem('token');
-    this.client_id = localStorage.getItem('client_id');
+
+    this.getTokenAndClientId();
+
     
     this.getBoard(this.token, this.client_id);
 
@@ -73,6 +74,15 @@ export class BoardComponent implements OnInit {
       }
     });
 
+  }
+
+
+  getTokenAndClientId() {
+    this.token = sessionStorage.getItem('token');
+    this.client_id = sessionStorage.getItem('client_id');
+    if(this.token === null || this.client_id === null) {
+      this.toastr.error('No se ha iniciado sesión', 'Error');
+    }
   }
 
   
