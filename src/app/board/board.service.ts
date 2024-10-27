@@ -19,8 +19,10 @@ export class BoardService {
       'Authorization': `Bearer ${token}`
     });
 
-    // Realizar la solicitud con los encabezados
+   
     return this.http.post<Board>(this.apiUrl+client_id, null, { headers });
   }
+
+
 
 }

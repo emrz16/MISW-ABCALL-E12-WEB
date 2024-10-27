@@ -33,8 +33,9 @@ export class ClientLoginComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      this.clientsAuthService.login(email, password).subscribe(
-        (response) => {
+
+      this.clientsAuthService.login(email, password).subscribe({
+        next: (response) => {
           console.log('response token:', response.token);
           console.log('response client_id:', response.client_id);
           
@@ -43,13 +44,15 @@ export class ClientLoginComponent implements OnInit {
           this.error = null;
           this.router.navigate(['clients/board']);
         },
-        (error) => {
+        error: (error) => {
           console.error('Error al iniciar sesión:', error);
-          this.toastr.error('Ha ocurrido un error. verifíca tus credenciales.', 'Error de inicio de sesión');
+          if (error.error) {
+            this.toastr.error(error.error, 'Error de Validación');
+          } else {
+            this.toastr.error(error, 'Error de registro');
+          }
         }
-      );
-    } else {
-      this.toastr.error('Por favor llena el formulario correctamente.', 'Error de Validación');
+      });
     }
   }
 

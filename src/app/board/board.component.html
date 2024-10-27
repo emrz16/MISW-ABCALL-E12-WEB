@@ -18,7 +18,7 @@
             <div class="row stats" style=" margin-top: 10%;">
               <div class="col-sm-9 col-md-4 mb-0">
                 <div class="card text-center">
-                  <div class="card-body">
+                  <div *ngIf="board?.stats" class="card-body">
                     <h5 class="card-title">Incidentes resueltos</h5>
                     <p class="card-text display-4">{{board.stats.total_closed_incidents}}</p>
                   </div>
@@ -26,7 +26,7 @@
               </div>
               <div class="col-sm-6 col-md-4 mb-3">
                 <div class="card text-center">
-                  <div class="card-body">
+                  <div *ngIf="board?.stats" class="card-body">
                     <h5 class="card-title">Incidentes abiertos</h5>
                     <p class="card-text display-4">{{board.stats.total_open_incidents}}</p>
                   </div>
@@ -34,7 +34,7 @@
               </div>
               <div class="col-sm-6 col-md-4 mb-3">
                 <div class="card text-center">
-                  <div class="card-body">
+                  <div *ngIf="board?.stats" class="card-body">
                     <h5 class="card-title">Total incidentes</h5>
                     <p class="card-text display-4">{{board.stats.total_incidents}}</p>
                   </div>
@@ -42,7 +42,7 @@
               </div>
               <div class="col-sm-6 col-md-4 mb-3">
                 <div class="card text-center">
-                  <div class="card-body">
+                  <div *ngIf="board?.stats" class="card-body">
                     <h5 class="card-title">Compliance Rate</h5>
                     <p class="card-text display-4">{{board.stats.compliance_rate * 100| number:'1.2-2' }} %</p>
                   </div>
@@ -50,7 +50,7 @@
               </div>
               <div class="col-sm-6 col-md-4 mb-3">
                 <div class="card text-center">
-                  <div class="card-body">
+                  <div *ngIf="board?.stats" class="card-body">
                     <h5 class="card-title">Tiempo promedio resolucion</h5>
                     <p class="card-text display-4">{{board.stats.average_resolution_time || '0 hrs'}}</p>
                   </div>
@@ -58,7 +58,7 @@
               </div>
               <div class="col-sm-6 col-md-4 mb-3">
                 <div class="card text-center">
-                  <div class="card-body">
+                  <div *ngIf="board?.stats" class="card-body">
                     <h5 class="card-title">Tiempo promedio de respuesta</h5>
                     <p class="card-text display-4">{{board.stats.average_response_time || 0 }}</p>
                   </div>
@@ -67,7 +67,7 @@
 
               <div class="col-sm-6 col-md-4 mb-3">
                 <div class="card text-center">
-                  <div class="card-body">
+                  <div *ngIf="board?.stats" class="card-body">
                     <h5 class="card-title">Incidentes por telefono</h5>
                     <p class="card-text display-4">{{board.stats.total_phone_incidents || 0 }}</p>
                   </div>
@@ -76,7 +76,7 @@
 
               <div class="col-sm-6 col-md-4 mb-3">
                 <div class="card text-center">
-                  <div class="card-body">
+                  <div *ngIf="board?.stats" class="card-body">
                     <h5 class="card-title">Incidentes por Email</h5>
                     <p class="card-text display-4">{{board.stats.total_email_incidents || 0 }}</p>
                   </div>
@@ -85,7 +85,7 @@
 
               <div class="col-sm-6 col-md-4 mb-3">
                 <div class="card text-center">
-                  <div class="card-body">
+                  <div *ngIf="board?.stats" class="card-body">
                     <h5 class="card-title">Incidentes por Chat</h5>
                     <p class="card-text display-4">{{board.stats.total_chat_incidents || 0 }}</p>
                   </div>
