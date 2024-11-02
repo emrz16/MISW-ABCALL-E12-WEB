@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpStatusCode } from '@angular/common/http';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
+import { ClientPlan } from '../client/client-plan/client-plan';
 
 
 interface LoginResponse {
@@ -30,19 +31,37 @@ export class ClientsAuthService {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<LoginResponse> {
-
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-
     const body = {
       email: email,
       password: password
     };
-
-     // Realizar la solicitud HTTP POST y devolver todo el objeto LoginResponse
      return this.http.post<LoginResponse>(this.apiUrl, body, { headers });
   }
+
+
+
+  getClientData(token: string, client_id:string): Observable<ClientPlan | string> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  
+    const url = `${environment.baseUrl}clients/${client_id}`;
+  
+    return this.http.get<ClientPlan>(url, { headers }).pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage: string = 'Error al obtener client data';
+        
+        console.error(errorMessage, error);
+        return of(errorMessage);
+      })
+    );
+
+  }
+
 }
 
 @Injectable({

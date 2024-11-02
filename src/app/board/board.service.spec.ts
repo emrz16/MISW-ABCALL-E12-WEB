@@ -73,7 +73,7 @@ describe('BoardService', () => {
     const req = httpMock.expectOne(`${mockApiUrl}${client_id}`);
 
     // Verifica que se haya hecho la solicitud POST con el encabezado correcto
-    expect(req.request.method).toBe('POST');
+    expect(req.request.method).toBe('GET');
     expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
     expect(req.request.body).toBeNull();  // Verifica que no haya un body enviado
 

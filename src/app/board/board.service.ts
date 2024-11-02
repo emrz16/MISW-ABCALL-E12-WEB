@@ -16,11 +16,12 @@ export class BoardService {
   getBoard(token: string | null,client_id:string | null): Observable<Board> {
     // Definir los encabezados con el token
     const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
    
-    return this.http.post<Board>(this.apiUrl+client_id, null, { headers });
+    return this.http.get<Board>(this.apiUrl+client_id, { headers });
   }
 
 

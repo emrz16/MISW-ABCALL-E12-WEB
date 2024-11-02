@@ -3,13 +3,14 @@
   }
   
   
-
-  
   header {
-    position:fixed;
+    position:relative;
     width:100%;
     top: 0px;
+    z-index: 99999;
   }
+
+  
   
   footer{
     position:fixed;
