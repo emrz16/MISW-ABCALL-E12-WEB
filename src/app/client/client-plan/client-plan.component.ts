@@ -14,8 +14,8 @@ import { ClientPlan } from './client-plan';
 })
 export class ClientPlanComponent implements OnInit {
 
-  client_id: string = '';
-  token: string = '';
+  token: string | null = '';
+  client_id: string | null = '';
   clientPlan: ClientPlan | null = null;
   //client_id: string = "5b1429d9-ffad-40bc-a27f-37b0ff38e58a";
   //token: string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI1YjE0MjlkOS1mZmFkLTQwYmMtYTI3Zi0zN2IwZmYzOGU1OGEiLCJleHAiOjE3MzA0ODEzNDYsImlhdCI6MTczMDQ3Nzc0NiwianRpIjoiNTBlNjhmNDMtYTMyNi00MDJmLWE3ZTUtOTI5MDkyOWE4Y2Q1In0.-W_HcP6fz-1PyecTJ2TvovAUgjNJlQrm2Jls_Xrjyag" 
@@ -26,13 +26,6 @@ export class ClientPlanComponent implements OnInit {
 
   ngOnInit() {
     this.getTokenAndClientId();
-    if(this.token === null || this.client_id === null) {
-      //TODO redirect to login page
-      this.toastr.error('No se ha iniciado sesión', 'Error');
-      this.router.navigate(['clients/login']);
-    }else{
-      this.getPlans(this.token);
-    }
     
   }
 
@@ -43,9 +36,7 @@ export class ClientPlanComponent implements OnInit {
 
 
   saveSelection(): void {
-
-    if (this.selectedPlan) {
-
+    if (this.selectedPlan && this.token && this.client_id) {
       this.plansService.assignPlanToClient( this.token, this.client_id, this.selectedPlan.id).subscribe({
         next: (response) => {
           console.log('Plan asignado:', response);
@@ -116,11 +107,20 @@ export class ClientPlanComponent implements OnInit {
     }
   
   
+
+
   getTokenAndClientId() {
-    this.token = sessionStorage.getItem('token') || '';
-    this.client_id = sessionStorage.getItem('client_id') || '';
-   
+    this.token = sessionStorage.getItem('token');
+    this.client_id = sessionStorage.getItem('client_id');
+    if(this.token === null || this.client_id === null) {
+      this.toastr.error('No se ha iniciado sesión', 'Error');
+      this.router.navigate(['clients/login']);
+    }else{
+      this.getPlans(this.token);
+    }
   }
+
+
 
 
   getClientData(): void {

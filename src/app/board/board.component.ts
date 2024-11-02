@@ -6,6 +6,7 @@ import 'jspdf-autotable';
 import { ToastrService } from 'ngx-toastr';
 import { interval, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,31 +27,35 @@ export class BoardComponent implements OnInit {
 
 
 
-  constructor(private boardService:BoardService, private toastr: ToastrService) { }
+  constructor(private boardService:BoardService,
+     private toastr: ToastrService,
+     private router: Router
+    ) { }
 
 
   ngOnInit() {
-
+    
+    this.getTokenAndClientId();
     this.updateCurrentTime(); 
 
-    this.getTokenAndClientId();
+    
 
     
-    this.getBoard(this.token, this.client_id);
+    
 
     // Configura el intervalo para actualizar cada X segundos (ej. cada 5 segundos)
-    this.refreshSubscription = interval(30000) // 5000 ms = 5 segundos
+    this.refreshSubscription = interval(5000) // 5000 ms = 5 segundos
       .pipe(
         switchMap(() => this.boardService.getBoard(this.token, this.client_id))
       )
       .subscribe({
         next: (board) => {
           this.board = board;
-          this.toastr.info('Actualizando tablero', 'Información');
+          //this.toastr.info('Actualizando tablero', 'Información');
           console.info('Actualizando tablero:');
         },
         error: (error) => {
-          console.error('Error al obtener el tablero:', error);
+          console.error('Error al actualizar el tablero:', error);
 
         }
       });
@@ -82,6 +87,9 @@ export class BoardComponent implements OnInit {
     this.client_id = sessionStorage.getItem('client_id');
     if(this.token === null || this.client_id === null) {
       this.toastr.error('No se ha iniciado sesión', 'Error');
+      this.router.navigate(['clients/login']);
+    }else{
+      this.getBoard(this.token, this.client_id);
     }
   }
 

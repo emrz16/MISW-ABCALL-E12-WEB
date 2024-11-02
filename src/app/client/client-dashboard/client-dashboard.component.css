@@ -10,3 +10,8 @@
   .card-body p {
     color: #555;
   }
+
+  .btn-dark {
+    background-color: #291563;
+    color: white;
+  }
