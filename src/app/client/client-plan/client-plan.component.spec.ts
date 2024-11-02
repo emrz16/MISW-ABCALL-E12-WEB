@@ -4,6 +4,10 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ClientPlanComponent } from './client-plan.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('ClientPlanComponent', () => {
   let component: ClientPlanComponent;
@@ -11,6 +15,13 @@ describe('ClientPlanComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        HttpClientTestingModule,
+        ToastrModule.forRoot() // Proporciona ToastrModule con configuración predeterminada
+      ],
       declarations: [ ClientPlanComponent ]
     })
     .compileComponents();

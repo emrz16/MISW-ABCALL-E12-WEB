@@ -4,6 +4,10 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ClientDashboardComponent } from './client-dashboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('ClientDashboardComponent', () => {
   let component: ClientDashboardComponent;
@@ -11,6 +15,12 @@ describe('ClientDashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        ToastrModule.forRoot() // Proporciona ToastrModule con configuración predeterminada
+      ],
       declarations: [ ClientDashboardComponent ]
     })
     .compileComponents();
