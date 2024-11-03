@@ -28,6 +28,11 @@ class LoginPageClient {
         this.enterPassword(password);
         this.clickLoginButton();
     }
+
+    clearLoginForm() {
+        this.getEmailInput().clear();
+        this.getPasswordInput().clear();
+    }
 }
 
 export default LoginPageClient;
