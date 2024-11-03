@@ -4,6 +4,7 @@ import { IncidenciaService, Incidencia } from '../incidencia.service';
 import { AgentsAuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-crear-incidencia',
@@ -15,14 +16,16 @@ export class CrearIncidenciaComponent implements OnInit {
   mensajeExito: string = '';
   mensajeError: string = '';
   possibleSolution: string = '';
-  client_token = ''  
-  client_id = '';
+
+  token: string | null = '';
+  client_id: string | null = '';
 
   constructor(
     private fb: FormBuilder,
     private incidenciaService: IncidenciaService,
     private authService: AgentsAuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.incidenciaForm = this.fb.group({
       user_id: ['', Validators.required],
@@ -33,13 +36,12 @@ export class CrearIncidenciaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.client_token = localStorage.getItem('token') || '';
-    this.client_id = localStorage.getItem('client_id') || '';
+    this.getTokenAndClientId();
    }
 
   guardar(): void {
 
-    if (this.incidenciaForm.valid) {
+    if (this.incidenciaForm.valid && this.client_id) {
       const formValues = this.incidenciaForm.value;
       const agent_id = localStorage.getItem("agent_id") || '';
       console.log(formValues);
@@ -54,13 +56,15 @@ export class CrearIncidenciaComponent implements OnInit {
       this.incidenciaService.crearIncidencia(nuevaIncidencia).subscribe({
         next: (response) => {
           console.log('Incidencia guardada:', response);
-          this.mensajeExito = 'Incidencia creada exitosamente.';
-          //this.incidenciaForm.reset();
+          this.mensajeExito = 'Incidencia creada exitosamente. id del incidente: ' + response.id;
+          
           this.incidenciaService.getIncidentSuggestion(response["id"]).subscribe({
             next: (response) => {
               this.possibleSolution = response.possible_solution;
             }
           })
+          this.limpiarForm();
+
           // this.router.navigate(['/ruta-destino']);
         },
         error: (error) => {
@@ -83,8 +87,22 @@ export class CrearIncidenciaComponent implements OnInit {
   
   limpiarForm(): void {
     this.incidenciaForm.reset();
-    this.mensajeExito = '';
+    
     this.mensajeError = '';
+    setTimeout(() => {
+      this.mensajeExito = '';
+  }, 7000); 
   }
+
+
+  getTokenAndClientId() {
+    this.token = sessionStorage.getItem('token');
+    this.client_id = sessionStorage.getItem('client_id');
+    if(this.token === null || this.client_id === null) {
+      this.toastr.error('No se ha iniciado sesión', 'Error');
+      this.router.navigate(['clients/login']);
+    }
+  }
+
 
 }

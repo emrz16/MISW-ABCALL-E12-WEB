@@ -19,8 +19,15 @@
             <li class="nav-item dropdown">
               <a  class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/incidents']">incidencias</a>
             </li>
+
             <li class="nav-item dropdown">
-              <a  class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/clients/login']">clientes</a>
+              <a  class="nav-link dropdown-toggle" id="navbarDropdownClients" role="button" data-toggle="dropdown"
+              aria-expanded="false" [routerLinkActive]="['active']">clientes</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownClients">
+                <li><a  class="dropdown-item" [routerLink]="['/clients/register']">Registro</a></li>
+                <li><a  class="dropdown-item" [routerLink]="['/clients/login']">Login</a></li>
+                <li><a  class="dropdown-item" [routerLink]="['/clients/dashboard']">dashboard</a></li>
+              </ul>
             </li>
             <li class="nav-item dropdown">
               <a  class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/clients/board']">ver tablero</a>
@@ -53,8 +60,18 @@
   
 
   <footer style="background-color: #e4daff;">
-    MISO - Tears of the devs
-    Intregantes: Darío, Andrés, Inés, Emmanuel.
+    <div class="row">
+      <div class="col-md-11">
+        MISO - Tears of the devs
+        Intregantes: Darío, Andrés, Inés, Emmanuel.
+      </div>
+      <div  class="col-md-1">
+        version 2.0.0
+      </div>
+    </div>
+    
+
+
   </footer>
 
 </div>

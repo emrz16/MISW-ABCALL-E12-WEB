@@ -24,11 +24,11 @@ describe('AppComponent', () => {
 
   it('should render correct text in footer', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges(); // Activa la detección de cambios para renderizar el HTML
+    fixture.detectChanges(); 
     const compiled = fixture.nativeElement as HTMLElement;
 
     // Verifica que el texto del footer sea el esperado
     const footerText = compiled.querySelector('footer')?.textContent?.trim();
-    expect(footerText).toBe('MISO - Tears of the devs Intregantes: Darío, Andrés, Inés, Emmanuel.');
+    expect(footerText).toBe('MISO - Tears of the devs Intregantes: Darío, Andrés, Inés, Emmanuel.  version 2.0.0');
   });
 });

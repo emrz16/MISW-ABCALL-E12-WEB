@@ -4,7 +4,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
 import { BoardService } from './board.service';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { Board } from './Board';
 
 
@@ -35,7 +35,7 @@ describe('BoardService', () => {
 
   it('should call getBoard with correct URL and headers', () => {
     const mockBoardResponse: Board = {
-      // 
+      //
       client:{
         id: '1',
         name: 'Test Client',
@@ -46,11 +46,11 @@ describe('BoardService', () => {
         plan: null
       },
       stats: {
-        average_response_time: '15 Mins',  
-        total_phone_incidents: 5,  
-        total_email_incidents: 7,  
-        total_chat_incidents: 9,  
-        compliance_rate: 50, 
+        average_response_time: '15 Mins',
+        total_phone_incidents: 5,
+        total_email_incidents: 7,
+        total_chat_incidents: 9,
+        compliance_rate: 50,
         total_incidents: 10,
         total_open_incidents: 5,
         total_closed_incidents: 3,
@@ -73,7 +73,7 @@ describe('BoardService', () => {
     const req = httpMock.expectOne(`${mockApiUrl}${client_id}`);
 
     // Verifica que se haya hecho la solicitud POST con el encabezado correcto
-    expect(req.request.method).toBe('POST');
+    expect(req.request.method).toBe('GET');
     expect(req.request.headers.get('Authorization')).toBe(`Bearer ${token}`);
     expect(req.request.body).toBeNull();  // Verifica que no haya un body enviado
 

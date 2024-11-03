@@ -1,0 +1,29 @@
+<div class="container text-center my-4">
+  <div class="d-flex align-items-center justify-content-center mb-4">
+    <img src="assets/images/panda.png" alt="Company Logo" class="img-fluid me-3" style="width: 50px;" />
+    <h2>ABCall</h2>
+  </div>
+  <div class="row">
+    <h3 style="color:#21005D">Selecciona tu Plan</h3>
+  </div>
+  <div class="row">
+    <div *ngFor="let plan of availablePlans" class="col-md-4 mb-3">
+      <div
+        class="card h-100 text-start plan-card"
+        [ngClass]="{ 'selected-plan': plan === selectedPlan }"
+        (click)="selectPlan(plan)"
+      >
+        <div class="card-body">
+          <h5 class="card-title">{{ plan.nombre }}</h5>
+          <p class="card-text">{{ plan.descripcion }}</p>
+          <ul class="list-unstyled text-justify">
+            <li *ngFor="let feature of plan.features">✔ {{ feature }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mt-4">
+    <button class="btn btn-morado" [disabled]="!selectedPlan" (click)="saveSelection()">Registrarse</button>
+  </div>
+</div>

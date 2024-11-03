@@ -16,11 +16,26 @@ export class BoardService {
   getBoard(token: string | null,client_id:string | null): Observable<Board> {
     // Definir los encabezados con el token
     const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
-    // Realizar la solicitud con los encabezados
-    return this.http.post<Board>(this.apiUrl+client_id, null, { headers });
+    return this.http.get<Board>(this.apiUrl+client_id, { headers });
   }
+
+  getClientReport(client_id: string, user_message: string): Observable<any> {
+    const url = `${this.apiUrl}/${client_id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const body = {
+
+      user_message: user_message
+    };
+
+    return this.http.post<any>(url, body, { headers });
+  }
+
+
 
 }
