@@ -20,8 +20,20 @@ export class BoardService {
       'Authorization': `Bearer ${token}`
     });
 
-   
     return this.http.get<Board>(this.apiUrl+client_id, { headers });
+  }
+
+  getClientReport(client_id: string, user_message: string): Observable<any> {
+    const url = `${this.apiUrl}/${client_id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const body = {
+
+      user_message: user_message
+    };
+
+    return this.http.post<any>(url, body, { headers });
   }
 
 
