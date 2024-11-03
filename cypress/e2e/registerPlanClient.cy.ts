@@ -24,9 +24,9 @@ describe('Client Plan Selection', () => {
 
     it('should verify plan details', () => {
         clientPlanPage
-            .verifyPlanDetails(0, 'Plan Básico', 'Plan ideal para pequeñas empresas')
-            .verifyPlanDetails(1, 'Plan Premium', 'Perfecto para empresas medianas')
-            .verifyPlanDetails(2, 'Plan Enterprise', 'Diseñado para grandes corporaciones');
+            .verifyPlanDetails(0, 'Emprendedor')
+            .verifyPlanDetails(1, 'Empresario')
+            .verifyPlanDetails(2, 'Empresario Plus');
     });
 
     it('should handle plan selection', () => {
