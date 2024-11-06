@@ -24,7 +24,7 @@ export class BoardService {
   }
 
   getClientReport(client_id: string, user_message: string): Observable<any> {
-    const url = `${this.apiUrl}/${client_id}`;
+    const url = `${this.apiUrl}${client_id}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
@@ -32,9 +32,10 @@ export class BoardService {
 
       user_message: user_message
     };
-
     return this.http.post<any>(url, body, { headers });
   }
+
+  
 
 
 
