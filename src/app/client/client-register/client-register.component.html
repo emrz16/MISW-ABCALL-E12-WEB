@@ -28,6 +28,7 @@
             <label for="direccion">Dirección</label>
             <input id="direccion" type="text" formControlName="direccion" class="input-field" placeholder="Dirección" />
             <div class="client-form-validation" *ngIf="clienteForm.get('direccion')?.invalid && clienteForm.get('direccion')?.touched">
+              <small class="error-message" *ngIf="clienteForm.get('direccion')?.errors?.['required']">Direccion es requerido</small>
               <small class="error-message" *ngIf="clienteForm.get('direccion')?.errors?.['maxlength']">No puede superar los 50 caracteres.</small> 
             </div>
              
