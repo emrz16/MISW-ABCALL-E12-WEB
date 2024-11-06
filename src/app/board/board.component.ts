@@ -25,6 +25,8 @@ export class BoardComponent implements OnInit {
   token: string | null = '';
   client_id: string | null = '';
 
+  
+
 
 
   constructor(private boardService:BoardService,
@@ -103,14 +105,16 @@ export class BoardComponent implements OnInit {
   sendMessage(): void {
     if (this.newMessage.trim()) {
       this.messages.push({ tipo: "USER", mensaje: this.newMessage }); 
-      this.newMessage = ''; 
+      
       const delay = this.getRandomDelay();
-
+      if (this.client_id && this.newMessage) {
+        let client = this.client_id;
+        let message = this.newMessage;
       setTimeout(() => {
-        this.messages.push({ tipo: 'IA', mensaje: this.board.ia_response.msg });
+          this.callIaEndpoint(client, message);
       }, delay);
-      // call for new message to generative IA and push into messages Array
-
+    }
+      this.newMessage = ''; 
     }
   }
 
@@ -123,6 +127,71 @@ export class BoardComponent implements OnInit {
     const delays = [2000, 3000, 4000, 5000]; // Los posibles tiempos de retraso
     const randomIndex = Math.floor(Math.random() * delays.length); // Seleccionar un índice aleatorio
     return delays[randomIndex]; // Retornar el valor aleatorio
+  }
+
+  callIaEndpoint(client_id: string, message: string) {
+
+    //alert("Llamando al endpoint con el mensaje: " + message + " para el cliente: " + client_id);
+//this.messages.push({ tipo: 'IA', mensaje: this.board.ia_response.msg });
+
+    
+     // Ensure these are not null
+      this.boardService.getClientReport(client_id, message ).subscribe({
+        next: (response) => {
+          console.log('response:', response);
+          this.messages.push({ tipo: 'IA', mensaje: response.msg });
+        },
+        error: (error) => {
+          console.error('Error al obtener el analisis:', error);
+          if (error.error) {
+            this.toastr.error(error.error, 'Error al obtener el analisis');
+          } else {
+            this.toastr.error(error, 'Error al obtener el analisis');
+          }
+        }
+      });
+  
+
+  }
+
+  generateAnalisis() {
+    if (!this.isDivVisible){
+      let client_id = this.client_id;
+
+        const metrics = [
+          "total_open_incidents",
+          "total_closed_incidents",
+          "average_resolution_time",
+          "average_response_time",
+          "total_phone_incidents",
+          "total_email_incidents",
+          "total_chat_incidents",
+          "compliance_rate"
+        ];
+
+        const shuffled = [...metrics].sort(() => 0.5 - Math.random());
+        const shuffledElements = shuffled.slice(0, 4)
+
+        shuffledElements.forEach((metric, index) => {
+                  const delay = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000; // Delay aleatorio entre 2000ms y 5000ms
+                  setTimeout(() => {
+                    if (client_id) {
+                      this.callIaEndpoint(client_id, metric);
+                    } else {
+                      console.error('client_id is null');
+                    }
+                  }, delay * index);
+                });
+
+
+    }else{
+      this.toastr.info('Presiona el boton Activar ', 'Importante');
+    }
+  }
+
+  getRandomMetrics(metrics: string[], count: number): string[] {
+    const shuffled = [...metrics].sort(() => 0.5 - Math.random()); // Mezcla los elementos aleatoriamente
+    return shuffled.slice(0, count); // Selecciona los primeros 'count' elementos
   }
 
 
