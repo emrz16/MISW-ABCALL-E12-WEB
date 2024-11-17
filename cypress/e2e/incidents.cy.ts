@@ -55,7 +55,6 @@ describe('Módulo de Incidencias', () => {
   });
 
   it('Debería mostrar sugerencia de IA después de crear incidencia', () => {
-    // Llenar y enviar el formulario
     cy.get('#user_id').type('12345');
     cy.get('#descripcion').type('Problema técnico');
     cy.get('#canal').select('phone');
