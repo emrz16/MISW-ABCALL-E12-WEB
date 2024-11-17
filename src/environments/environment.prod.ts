@@ -1,5 +1,5 @@
 const baseUrl =
- 'https://api-gateway-649096178068.us-central1.run.app/';
+ 'http://34.8.156.167/';
 
 export const environment = {
  production: true,
