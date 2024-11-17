@@ -1,4 +1,4 @@
-import { ClientPlanPage } from './pageObjects/ClientPlanPage';
+import { ClientPlanPage } from './pageObjects/clientPlanPage';
 import config from "../fixtures/config.json";
 import LoginPageClient from './pageObjects/loginClient';
 
