@@ -6,10 +6,12 @@ describe('Módulo de Incidencias', () => {
     // Setup común para todos los tests
     const loginPageClient = new LoginPageClient();
     cy.visit(config.baseUrl + '/clients/login');
+    cy.wait(2000);
     loginPageClient.clearLoginForm();
     loginPageClient.login(config.clientEmail, config.clientPassword);
     cy.wait(1000);
     cy.visit(config.baseUrl + '/incidents');
+    cy.wait(1000);
   });
 
   it('Debería crear una incidencia con datos válidos', () => {
@@ -32,10 +34,8 @@ describe('Módulo de Incidencias', () => {
   });
 
   it('Debería mostrar errores de validación cuando los campos están vacíos', () => {
-    // Click en guardar sin llenar campos
     cy.get('button[type="submit"]').click();
 
-    // Verificar mensajes de error
     cy.get('.text-danger').should('be.visible');
     cy.contains('El usuario es requerido').should('be.visible');
     cy.contains('La descripción es requerida').should('be.visible');
@@ -43,15 +43,12 @@ describe('Módulo de Incidencias', () => {
   });
 
   it('Debería limpiar el formulario al hacer click en cancelar', () => {
-    // Llenar el formulario
     cy.get('#user_id').type('12345');
     cy.get('#descripcion').type('Test descripción');
     cy.get('#canal').select('phone');
 
-    // Click en cancelar
     cy.contains('button', 'Cancelar').click();
 
-    // Verificar que los campos estén vacíos
     cy.get('#user_id').should('have.value', '');
     cy.get('#descripcion').should('have.value', '');
     cy.get('#canal').should('have.value', null);
@@ -61,20 +58,20 @@ describe('Módulo de Incidencias', () => {
     // Llenar y enviar el formulario
     cy.get('#user_id').type('12345');
     cy.get('#descripcion').type('Problema técnico');
-    cy.get('#canal').select('chat');
+    cy.get('#canal').select('phone');
     cy.get('button[type="submit"]').click();
 
-    // Verificar que aparezca la sugerencia
     cy.get('h4').contains('Sugerencia IA').should('be.visible');
     cy.get('.col-2 p').should('exist');
   });
 
   it('Debería validar la longitud máxima de la descripción', () => {
-    const longText = 'a'.repeat(1001); // Asumiendo un límite de 1000 caracteres
+    const longText = 'a'.repeat(1001);
     cy.get('#descripcion').type(longText);
     cy.get('button[type="submit"]').click();
-    // Aquí deberías agregar la validación específica según tus requerimientos
   });
+
+
 
 
   
