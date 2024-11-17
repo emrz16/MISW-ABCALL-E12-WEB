@@ -31,10 +31,20 @@
             <div class="mb-3">
               <label for="descripcion" class="form-label">Descripción del incidente</label>
               <textarea id="descripcion" class="form-control" formControlName="descripcion" rows="4"
-                placeholder="Ingrese la descripción del incidente" style="background-color: #FEF7FF;"></textarea>
+                placeholder="Ingrese la descripción del incidente" style="background-color: #FEF7FF;" (blur)="onDescripcionBlur()"> </textarea>
               <div class="text-danger mt-1"
                 *ngIf="incidenciaForm.get('descripcion')?.touched && incidenciaForm.get('descripcion')?.invalid">
                 La descripción es requerida.
+              </div>
+            </div>
+            <div class="mb-3">
+              <div *ngIf="possibleSolution"> 
+                <div class="row">
+                  <h4>Posible solución (sugerencia IA)</h4>
+                </div>
+                <div class="row">
+                  <p>{{ possibleSolution }}</p>
+                </div>
               </div>
             </div>
 
@@ -66,14 +76,5 @@
         </div>
       </div>
     </div>
-    <div class="col-2">
-      <div *ngIf="possibleSolution">
-        <div class="row">
-          <h4>Sugerencia IA</h4>
-        </div>
-        <div class="row">
-          <p>{{ possibleSolution }}</p>
-        </div>
-      </div>
-    </div>
+    
   </div>

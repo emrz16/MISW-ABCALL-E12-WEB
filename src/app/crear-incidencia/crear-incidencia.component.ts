@@ -94,6 +94,17 @@ export class CrearIncidenciaComponent implements OnInit {
   }, 7000); 
   }
 
+  onDescripcionBlur(): void {
+    const formValues = this.incidenciaForm.value;
+    if (formValues.descripcion !== '') {
+        this.incidenciaService.getIncidentPosibleSolution().subscribe({
+          next: (response) => {
+            this.possibleSolution = response.possible_solution;
+          }
+        })
+    }
+  }
+
 
   getTokenAndClientId() {
     this.token = sessionStorage.getItem('token');
