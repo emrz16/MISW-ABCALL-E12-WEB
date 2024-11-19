@@ -19,6 +19,10 @@ export interface IncidentSuggestionResponse{
   possible_solution: string
 }
 
+export interface IncidentPossibleSolutionResponse{
+  possible_solution: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +30,7 @@ export class IncidenciaService {
 
   private apiUrl = environment.baseUrl + 'incidents';
   private apiUrlSuggestions = environment.baseUrl + 'incidents/';
+  private apiUrlPossibleSolution = environment.baseUrl + 'incident-solution';
   constructor(private http: HttpClient) { }
 
   // Método para crear una nueva incidencia
@@ -52,26 +57,23 @@ export class IncidenciaService {
       );
   }
 
-  getIncidentPosibleSolution(): Observable<IncidentSuggestionResponse>{
-    const mockResponse: IncidentSuggestionResponse = {
-      incident_id: '12345',
-      description: 'El sistema muestra un error al iniciar sesión.',
-      possible_solution: 'Revisar las credenciales ingresadas o reiniciar la aplicación.',
-    };
+  getIncidentPosibleSolution(incident_description: string): Observable<IncidentPossibleSolutionResponse>{
 
-    return of(mockResponse); // Simula una respuesta como un Observable
-
-
-    /*
     const token = localStorage.getItem("token");
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<IncidentSuggestionResponse>(this.apiUrlSuggestions + "/solution", {headers})
+
+    const body = {
+
+      description: incident_description
+    };
+
+    return this.http.post<IncidentPossibleSolutionResponse>(this.apiUrlPossibleSolution, body,{headers})
       .pipe(
         catchError(this.handleError)
       );
-      */
+      
 
   }
 

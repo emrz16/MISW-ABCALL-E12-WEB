@@ -55,8 +55,9 @@
               <label for="canal" class="form-label">Canal</label>
               <select id="canal" class="form-control" formControlName="canal" style="background-color: #FEF7FF;">
                 <option value="" disabled selected>Seleccione el canal</option>
-                <option value="email">Email</option>
-                <option value="phone">Telefono</option>
+                <option *ngFor="let canal of canales" [value]="canal.value">
+                  {{ canal.label }}
+                </option>
               </select>
               <div class="text-danger mt-1"
                 *ngIf="incidenciaForm.get('canal')?.touched && incidenciaForm.get('canal')?.invalid">

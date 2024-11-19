@@ -1,0 +1,40 @@
+<div class="login-container">
+
+  <div class="main-image">
+    <img src="assets/images/panda.png" alt="Icono" width="150" height="150" >
+  </div>
+
+  <h2>Inicio de sesion de Agente</h2>
+
+  <form [formGroup]="agentForm" (ngSubmit)="login()">
+    <div class="form-group">
+      <h5 class="textos">Correo</h5>
+      
+      <input type="email" id="email" formControlName="email" class="input-field" placeholder="Correo">
+      <div *ngIf="agentForm.get('email')?.invalid && agentForm.get('email')?.touched">
+        <small class="error-message" *ngIf="agentForm.get('email')?.errors?.['required']">Email es requerido.</small>
+        <small class="error-message" *ngIf="agentForm.get('email')?.errors?.['email']">Ingresa un email valido.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <h5 class="textos">Contraseña</h5>
+      <input type="password" id="password" formControlName="password" class="input-field" placeholder="Contraseña" >
+      <div *ngIf="agentForm.get('password')?.invalid && agentForm.get('password')?.touched">
+        <small class="error-message" *ngIf="agentForm.get('password')?.errors?.['required']">Contraseña es requerido.</small>
+      </div>
+    </div>
+
+    <button class="login-button" type="submit" [disabled]="agentForm.invalid">Ingresar</button>
+
+    <div class="links">
+      <a href="/agents/register" class="link">Registro</a>
+      <a href="/agents/recover" class="link">Recuperar contraseña</a>
+    </div>
+
+  </form>
+      
+  
+
+
+</div>
