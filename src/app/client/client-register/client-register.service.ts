@@ -20,16 +20,12 @@ export class ClientRegisterService {
   registerClient(client: ClientDto): Observable<Client | { error: string }> {
     return this.http.post<Client>(this.apiUrl, client).pipe(
       map(response => {
-        // Si la respuesta es exitosa, devuelve el cliente
         return response;
       }),
       catchError((error: HttpErrorResponse) => {
-        // Manejar el error y devolver un Observable con un objeto personalizado
         if (error.error && error.error.msg) {
-          // Si el error tiene un mensaje específico, retornarlo como un objeto de error
           return throwError(() => new Error(error.error.msg));
         } else {
-          // Si el error es de otro tipo, lanzar un mensaje genérico
           return throwError(() => new Error('Ocurrió un error inesperado. Intente nuevamente.'));
         }
       })

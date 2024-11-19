@@ -30,6 +30,16 @@
               </ul>
             </li>
             <li class="nav-item dropdown">
+              <a  class="nav-link dropdown-toggle" id="navbarDropdownClients" role="button" data-toggle="dropdown"
+              aria-expanded="false" [routerLinkActive]="['active']">agentes</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownClients">
+                <li><a  class="dropdown-item" [routerLink]="['/agents/register']">Registro</a></li>
+                <li><a  class="dropdown-item" [routerLink]="['/agents/login']">Login</a></li>
+                <li><a  class="dropdown-item" [routerLink]="['/agents/dashboard']">dashboard</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item dropdown">
               <a  class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/clients/board']">ver tablero</a>
             </li>
             <li class="nav-item dropdown">

@@ -20,6 +20,24 @@ export class CrearIncidenciaComponent implements OnInit {
   token: string | null = '';
   client_id: string | null = '';
 
+  canalesEmprendedor = [
+    { value: 'phone', label: 'Teléfono' },
+  ];
+  canalesEmpresario = [
+    { value: 'email', label: 'Email' },
+    { value: 'phone', label: 'Teléfono' },
+    { value: 'chat', label: 'Chat' }, 
+  ];
+  
+  canalesPlus = [
+    { value: 'email', label: 'Email' },
+    { value: 'phone', label: 'Teléfono' },
+    { value: 'chat', label: 'Chat' }, 
+  ];
+
+  canales: { value: string; label: string; }[] = [];
+
+
   constructor(
     private fb: FormBuilder,
     private incidenciaService: IncidenciaService,
@@ -32,11 +50,13 @@ export class CrearIncidenciaComponent implements OnInit {
       descripcion: ['', Validators.required],
       canal: ['', Validators.required]
     });
+
     this.authService.login("test@example.com", "securepassword")
   }
 
   ngOnInit(): void {
     this.getTokenAndClientId();
+    this.canales = this.canalesEmprendedor;
    }
 
   guardar(): void {
@@ -58,11 +78,6 @@ export class CrearIncidenciaComponent implements OnInit {
           console.log('Incidencia guardada:', response);
           this.mensajeExito = 'Incidencia creada exitosamente. id del incidente: ' + response.id;
           
-          this.incidenciaService.getIncidentSuggestion(response["id"]).subscribe({
-            next: (response) => {
-              this.possibleSolution = response.possible_solution;
-            }
-          })
           this.limpiarForm();
 
           // this.router.navigate(['/ruta-destino']);
@@ -81,13 +96,14 @@ export class CrearIncidenciaComponent implements OnInit {
   cancelar(): void {
     this.incidenciaForm.reset();
     this.mensajeExito = '';
+    this.possibleSolution = "";
     this.mensajeError = '';
     console.log('Formulario cancelado');
   }
   
   limpiarForm(): void {
     this.incidenciaForm.reset();
-    
+    this.possibleSolution = "";
     this.mensajeError = '';
     setTimeout(() => {
       this.mensajeExito = '';
@@ -97,7 +113,7 @@ export class CrearIncidenciaComponent implements OnInit {
   onDescripcionBlur(): void {
     const formValues = this.incidenciaForm.value;
     if (formValues.descripcion !== '') {
-        this.incidenciaService.getIncidentPosibleSolution().subscribe({
+        this.incidenciaService.getIncidentPosibleSolution(formValues.descripcion).subscribe({
           next: (response) => {
             this.possibleSolution = response.possible_solution;
           }
