@@ -22,7 +22,7 @@ export class ClientRegisterComponent implements OnInit {
     this.clienteForm = this.fb.group({  
       usuario: ['Usuario1', [Validators.required, Validators.maxLength(20)]],
       compania: ['Compania1', [Validators.required, Validators.maxLength(20)]],
-      correo: ['client@test.com', [Validators.required, Validators.email, Validators.maxLength(20)]],
+      correo: ['client@test.com', [Validators.required, Validators.email, Validators.maxLength(30)]],
       direccion: ['Direccion1', [Validators.required, Validators.maxLength(50)]],
       contrasena: ['123456789', [Validators.required,Validators.minLength(8), Validators.maxLength(50)]],
       confirmarContrasena: ['123456789', Validators.required]

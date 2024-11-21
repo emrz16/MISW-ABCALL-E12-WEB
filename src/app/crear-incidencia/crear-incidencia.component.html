@@ -50,6 +50,22 @@
 
 
 
+            <!-- Cliente -->
+            <div class="mb-4">
+              <label for="cliente" class="form-label">Cliente</label>
+              <select id="cliente"  (change)="onClientChange($event)" class="form-select" size="3" aria-label="size 3 select example">
+                <option value="" disabled selected>-- Seleccionar --</option>
+                <option *ngFor="let cliente of clients" [value]="cliente.id">
+                  {{ cliente.company_name }}
+                </option>
+              </select>
+
+              <div class="text-danger mt-1"
+                *ngIf="incidenciaForm.get('cliente')?.touched && incidenciaForm.get('cliente')?.invalid">
+                El cliente es requerido.
+              </div>
+            </div>
+
             <!-- Canal -->
             <div class="mb-4">
               <label for="canal" class="form-label">Canal</label>
