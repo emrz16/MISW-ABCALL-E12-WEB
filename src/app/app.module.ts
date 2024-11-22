@@ -16,6 +16,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ClientRegisterComponent } from './client/client-register/client-register.component';
 import { ClientDashboardComponent } from './client/client-dashboard/client-dashboard.component';
+import { AgentRegisterComponent } from './agent/agent-register/agent-register.component';
+import { AgentDashboardComponent } from './agent/agent-dashboard/agent-dashboard.component';
+import { AgentLoginComponent } from './auth/agent/agent-login/agent-login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,11 @@ import { ClientDashboardComponent } from './client/client-dashboard/client-dashb
     BoardComponent,
     ClientPlanComponent,
     ClientDashboardComponent,
-    ClientRegisterComponent
+    ClientRegisterComponent,
+    AgentRegisterComponent,
+    AgentDashboardComponent,
+    AgentLoginComponent
+
   ],
   imports: [
     CommonModule,
