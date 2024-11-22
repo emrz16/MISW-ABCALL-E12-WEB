@@ -4,6 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { AgentDashboardComponent } from './agent-dashboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('AgentDashboardComponent', () => {
   let component: AgentDashboardComponent;
@@ -11,7 +14,11 @@ describe('AgentDashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AgentDashboardComponent ]
+      declarations: [ AgentDashboardComponent ],
+      imports: [ReactiveFormsModule,
+        HttpClientTestingModule,
+        ToastrModule.forRoot() 
+      ],
     })
     .compileComponents();
   }));

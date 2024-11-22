@@ -4,6 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { AgentLoginComponent } from './agent-login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('AgentLoginComponent', () => {
   let component: AgentLoginComponent;
@@ -11,7 +14,11 @@ describe('AgentLoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AgentLoginComponent ]
+      declarations: [ AgentLoginComponent ],
+      imports: [ReactiveFormsModule,
+        HttpClientTestingModule,
+        ToastrModule.forRoot() 
+      ],
     })
     .compileComponents();
   }));

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { CrearIncidenciaComponent } from './crear-incidencia.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CrearIncidenciaComponent', () => {
   let component: CrearIncidenciaComponent;
@@ -22,6 +23,7 @@ describe('CrearIncidenciaComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [CrearIncidenciaComponent],
       imports: [ReactiveFormsModule,
+        HttpClientTestingModule,
         ToastrModule.forRoot() 
       ], // Importa ReactiveFormsModule para manejar formularios reactivos
       providers: [

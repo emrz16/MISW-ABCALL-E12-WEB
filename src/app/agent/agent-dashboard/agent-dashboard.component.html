@@ -15,7 +15,7 @@
           <div class="row mb-3">
             <div class="col">
               <strong>Nombre:</strong>
-              <p class="mb-0">{{ agent_id }}</p>
+              <p class="mb-0">{{ agent.name }}</p>
             </div>
           </div>
         </div>
@@ -29,10 +29,11 @@
 
   <div *ngIf="agent_id" class="col">
     <div class="container mt-4">
-      <div class="card">
+      <div class="card"  >
         <div class="card-header text-white" style="background-color: #291563;">
           Incidentes
         </div>
+        <div style=" height:700px; overflow-y: scroll;">
         <table *ngIf="incidents.length > 0" class="table table-striped">
           <thead>
             <tr>
@@ -43,16 +44,18 @@
               <th>Última Actualización</th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor="let incident of incidents">
-              <td>{{ incident.id }}</td>
-              <td>{{ incident.description }}</td>
-              <td>{{ incident.date }}</td>
-              <td>{{ incident.status }}</td>
-              <td>{{ incident.agent_id_last_update }}</td>
-            </tr>
-          </tbody>
-        </table>
+          
+            <tbody>
+              <tr *ngFor="let incident of incidents">
+                <td>{{ incident.id }}</td>
+                <td>{{ incident.description }}</td>
+                <td>{{ incident.date }}</td>
+                <td>{{ incident.status }}</td>
+                <td>{{ incident.agent_id_last_update }}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
       </div>
     </div>
   </div>

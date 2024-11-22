@@ -35,7 +35,7 @@ export class AgenteService {
   }
 
   getAgentById(agent_id: string): Observable<Agent> {
-    return this.http.get<Agent>( this.incidentsUrl + `/${agent_id}`);
+    return this.http.get<Agent>( this.apiUrl + `/${agent_id}`);
   }
 
 }
