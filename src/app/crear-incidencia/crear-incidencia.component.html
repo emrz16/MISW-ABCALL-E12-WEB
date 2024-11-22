@@ -20,7 +20,7 @@
             <!-- User id -->
             <div class="mb-3">
               <label for="user_id" class="form-label">Usuario</label>
-              <input type="text" id="user_id" class="form-control" formControlName="user_id"
+              <input type="text" id="user_id" class="form-control" formControlName="user_id" (keypress)="allowOnlyNumbers($event)"
                 placeholder="Ingrese el id del usuario" style="background-color: #FEF7FF;"/>
               <div class="text-danger mt-1"
                 *ngIf="incidenciaForm.get('user_id')?.touched && incidenciaForm.get('user_id')?.invalid">
@@ -38,7 +38,7 @@
               </div>
             </div>
             <div class="mb-3">
-              <div *ngIf="possibleSolution"> 
+              <div> 
                 <div class="row">
                   <h4>Posible solución (sugerencia IA)</h4>
                 </div>
@@ -53,36 +53,36 @@
             <!-- Cliente -->
             <div class="mb-4">
               <label for="cliente" class="form-label">Cliente</label>
-              <select id="cliente"  (change)="onClientChange($event)" class="form-select" size="3" aria-label="size 3 select example">
+              <select id="cliente"  (change)="onClientChange($event)" class="form-select" size="5" aria-label="size 3 select example">
                 <option value="" disabled selected>-- Seleccionar --</option>
                 <option *ngFor="let cliente of clients" [value]="cliente.id">
                   {{ cliente.company_name }}
                 </option>
               </select>
-
-              <div class="text-danger mt-1"
-                *ngIf="incidenciaForm.get('cliente')?.touched && incidenciaForm.get('cliente')?.invalid">
-                El cliente es requerido.
-              </div>
             </div>
 
             <!-- Canal -->
             <div class="mb-4">
               <label for="canal" class="form-label">Canal</label>
               <select id="canal" class="form-control" formControlName="canal" style="background-color: #FEF7FF;">
-                <option value="" disabled selected>Seleccione el canal</option>
-                <option *ngFor="let canal of canales" [value]="canal.value">
-                  {{ canal.label }}
+                <option value="" disabled selected>-- Seleccionar --</option>
+                <!-- Mostrar Teléfono si es Emprendedor -->
+                <option value="phone" *ngIf="planDataName === 'Emprendedor' || planDataName === 'Empresario' || planDataName === 'Empresario Plus' || planDataName === ''">
+                  Teléfono
+                </option>
+                <!-- Mostrar Email si es Empresario o Empresario Plus -->
+                <option value="email" *ngIf="planDataName === 'Empresario' || planDataName === 'Empresario Plus'">
+                  Email
+                </option>
+                <!-- Mostrar Chat si es Empresario Plus -->
+                <option value="chat" *ngIf="planDataName === 'Empresario Plus'">
+                  Chat
                 </option>
               </select>
-              <div class="text-danger mt-1"
-                *ngIf="incidenciaForm.get('canal')?.touched && incidenciaForm.get('canal')?.invalid">
-                El canal es requerido.
-              </div>
             </div>
 
             <div class="d-flex justify-content-between">
-              <button type="submit" class="btn" style="background-color: #21005D; color: white;">
+              <button type="submit" class="btn" style="background-color: #21005D; color: white;" [disabled]="incidenciaForm.invalid">
                 Guardar
               </button>
               <button type="button" (click)="cancelar()" class="btn" style="background-color: #21005D; color: white;" >

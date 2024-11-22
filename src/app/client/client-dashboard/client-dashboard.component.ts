@@ -57,6 +57,10 @@ export class ClientDashboardComponent implements OnInit {
     this.router.navigate(['incidents']);
   }
 
+  modificarPlan() {
+    this.router.navigate(['clients/plan-selection']);
+  }
+
   getPlanData(): void {
     if (this.token && this.client_id) {
 

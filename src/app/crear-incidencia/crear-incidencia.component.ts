@@ -28,22 +28,7 @@ export class CrearIncidenciaComponent implements OnInit {
   clients: Client[] = [];
   selectedClient: Client | null = null;
   planData: Plan | null = null;
-
-  canalesEmprendedor = [
-    { value: 'phone', label: 'Teléfono' },
-  ];
-  canalesEmpresario = [
-    { value: 'email', label: 'Email' },
-    { value: 'phone', label: 'Teléfono' }
-  ];
-  
-  canalesPlus = [
-    { value: 'email', label: 'Email' },
-    { value: 'phone', label: 'Teléfono' },
-    { value: 'chat', label: 'Chat' }, 
-  ];
-
-  canales: { value: string; label: string; }[] = this.canalesEmprendedor;
+  planDataName: string = '';
 
 
   constructor(
@@ -67,8 +52,6 @@ export class CrearIncidenciaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTokenAndClientId();
-    this.canales = this.canalesEmprendedor;
-
     this.fetchClients();
    }
 
@@ -166,7 +149,7 @@ export class CrearIncidenciaComponent implements OnInit {
     const clientId = selectElement.value; // Ahora puedes acceder a 'value'
     this.incidenciaForm.get('cliente')?.setValue(selectElement.value);
     this.selectedClient = this.clients.find(client => client.id === clientId) || null;
-    console.log('Cliente seleccionado:', this.selectedClient);
+    //console.log('Cliente seleccionado:', this.selectedClient);
 
     if (this.selectedClient) {
       this.client_id = this.selectedClient.id;
@@ -182,17 +165,14 @@ export class CrearIncidenciaComponent implements OnInit {
           } else {
             // Si la respuesta es un objeto ClientPlan
             this.planData = response as Plan;
-            alert(this.planData.nombre)
+            console.log(">>>>>>>>"+this.planData.nombre)
             if(this.planData.nombre){
               if(this.planData.nombre === 'Emprendedor'){
-                this.canales = [];
-                this.canales = this.canalesEmprendedor;
+                this.planDataName = 'Emprendedor';
               }else if(this.planData.nombre === 'Empresario'){
-                this.canales = [];
-                this.canales = this.canalesEmpresario;
+                this.planDataName = 'Empresario';
               }else if(this.planData.nombre === 'Empresario Plus'){
-                this.canales = [];
-                this.canales = this.canalesPlus;
+                this.planDataName = 'Empresario Plus';
               }
             }
           }
@@ -214,6 +194,14 @@ export class CrearIncidenciaComponent implements OnInit {
         }
         return 0; // son iguales
       });
+    }
+
+  
+    allowOnlyNumbers(event: KeyboardEvent): void {
+      const charCode = event.charCode || event.keyCode;
+      if (charCode < 48 || charCode > 57) {
+        event.preventDefault();
+      }
     }
   
 
