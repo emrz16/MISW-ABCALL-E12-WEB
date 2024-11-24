@@ -14,14 +14,14 @@
     <form [formGroup]="agenteForm" (ngSubmit)="guardarAgente()">
       <div class="row">
         <div class="form-group col-md-6">
-          <label for="name">Nombre</label>
+          <label i18n for="name">Nombre</label>
           <input id="name" type="text" formControlName="name" class="input-field" placeholder="Nombre" />
           <div class="form-error" *ngIf="agenteForm.get('name')?.invalid && agenteForm.get('name')?.touched">
             <small i18n *ngIf="agenteForm.get('name')?.errors?.['required']">El nombre es requerido.</small>
           </div>
         </div>
         <div class="form-group col-md-6">
-          <label for="email">Correo Electrónico</label>
+          <label i18n for="email">Correo Electrónico</label>
           <input id="email" type="email" formControlName="email" class="input-field" placeholder="Correo Electrónico" />
           <div class="form-error" *ngIf="agenteForm.get('email')?.invalid && agenteForm.get('email')?.touched">
             <small i18n *ngIf="agenteForm.get('email')?.errors?.['required']">El correo es requerido.</small>
