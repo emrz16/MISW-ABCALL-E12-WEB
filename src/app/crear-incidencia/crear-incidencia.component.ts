@@ -122,7 +122,7 @@ export class CrearIncidenciaComponent implements OnInit {
 
 
   getTokenAndClientId() {
-    this.token = sessionStorage.getItem('token');
+    this.token = localStorage.getItem('token');
     this.client_id = sessionStorage.getItem('client_id');
     this.agent_id = localStorage.getItem('agent_id');
    

@@ -64,4 +64,10 @@ export class AgentDashboardComponent implements OnInit {
     );
   }
 
+  editIncident(incidentId: number) {
+    console.log('Editar incidente con ID:', incidentId);
+    localStorage.setItem('incident_to_update', incidentId.toString());
+    this.router.navigate(['incident/update']);
+  }
+
 }

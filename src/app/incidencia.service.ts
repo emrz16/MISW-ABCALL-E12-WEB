@@ -4,6 +4,22 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 
+
+export interface IncidentDetail {
+  id: string;
+  agent_id_creation: string;
+  description: string;
+  date: string; 
+  registration_medium: string;
+  user_id: number;
+  status: string;
+  agent_id_last_update: string;
+  created_at: string; 
+  updated_at: string; 
+  client_id: string;
+}
+
+
 export interface Incidencia {
   agent_id: string;
   description: string;
@@ -11,6 +27,15 @@ export interface Incidencia {
   registration_medium: string;
   user_id: number;
   client_id: string;
+}
+
+export interface IncidenciaUpdate {
+  agent_id: string;
+  description: string;
+  date: string;
+  registration_medium: string;
+  user_id: number;
+  status: string;
 }
 
 export interface IncidentSuggestionResponse{
@@ -46,6 +71,18 @@ export class IncidenciaService {
       );
   }
 
+  actualizarIncidencia(incidencia: IncidenciaUpdate, id:string): Observable<any> {
+    console.log(incidencia);
+    const token = localStorage.getItem("token");
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<any>(this.apiUrl+"/"+id,incidencia,  {headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   getIncidentSuggestion(incident_id: string): Observable<IncidentSuggestionResponse>{
     const token = localStorage.getItem("token");
     const headers = new HttpHeaders({
@@ -73,9 +110,22 @@ export class IncidenciaService {
       .pipe(
         catchError(this.handleError)
       );
-      
-
+    
   }
+
+  getIncidentDetail(incidentId: string): Observable<IncidentDetail> {
+    console.log(incidentId);
+    const token = localStorage.getItem("token");
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<any>(this.apiUrl+"/"+incidentId, {headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -87,4 +137,6 @@ export class IncidenciaService {
     }
     return throwError('Algo malo sucedió; por favor, intenta de nuevo más tarde.');
   }
+
+
 }
