@@ -19,9 +19,10 @@ import { ClientDashboardComponent } from './client/client-dashboard/client-dashb
 import { AgentRegisterComponent } from './agent/agent-register/agent-register.component';
 import { AgentDashboardComponent } from './agent/agent-dashboard/agent-dashboard.component';
 import { AgentLoginComponent } from './auth/agent/agent-login/agent-login.component';
+import { UpdateIncidenciaComponent } from './update-incidencia/update-incidencia.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     CrearIncidenciaComponent,
     BoardComponent,
@@ -30,9 +31,9 @@ import { AgentLoginComponent } from './auth/agent/agent-login/agent-login.compon
     ClientRegisterComponent,
     AgentRegisterComponent,
     AgentDashboardComponent,
-    AgentLoginComponent
-
-  ],
+    AgentLoginComponent,
+      UpdateIncidenciaComponent
+   ],
   imports: [
     CommonModule,
     BrowserModule,

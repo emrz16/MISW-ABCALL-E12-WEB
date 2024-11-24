@@ -52,6 +52,9 @@
                 <td>{{ incident.date }}</td>
                 <td>{{ incident.status }}</td>
                 <td>{{ incident.agent_id_last_update }}</td>
+                <td>
+                  <button i18n (click)="editIncident(incident.id)" class="btn btn-dark me-2">Editar</button>
+                </td>
               </tr>
             </tbody>
           </table>
