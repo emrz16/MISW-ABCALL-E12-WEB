@@ -11,6 +11,7 @@ import { ClientPlanComponent } from './client/client-plan/client-plan.component'
 import { AgentDashboardComponent } from './agent/agent-dashboard/agent-dashboard.component';
 import { AgentRegisterComponent } from './agent/agent-register/agent-register.component';
 import { AgentLoginComponent } from './auth/agent/agent-login/agent-login.component';
+import { UpdateIncidenciaComponent } from './update-incidencia/update-incidencia.component';
 
 const routes: Routes = [
   {path: 'clients/login2', component:AuthComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'agents/register', component: AgentRegisterComponent},
   {path: 'agents/login', component: AgentLoginComponent},
   {path: 'agents/recover', component:ClientRecoverComponent},
+  {path: 'incident/update', component:UpdateIncidenciaComponent}
   
   
 ];

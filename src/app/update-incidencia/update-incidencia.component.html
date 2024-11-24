@@ -1,0 +1,92 @@
+<!-- src/app/incidencia/crear-incidencia/crear-incidencia.component.html -->
+<div class="container" style="height: 110%; ">
+  <div class="row">
+    <div class="col-10">
+      <div class="card w-200">
+        <div class="card-body">
+          <h2 i18n class="card-title text-center mb-4">Detalle Incidente</h2>
+
+          <!-- Mensaje de Éxito -->
+          <div *ngIf="mensajeExito" class="alert alert-success" role="alert">
+            {{ mensajeExito }}
+          </div>
+
+          <!-- Mensaje de Error -->
+          <div *ngIf="mensajeError" class="alert alert-danger" role="alert">
+            {{ mensajeError }}
+          </div>
+
+          <form [formGroup]="incidenciaForm">
+            <!-- User id -->
+            <div class="mb-3">
+              <label i18n for="user_id" class="form-label">Usuario</label>
+                <input type="text" id="user_id" class="form-control" formControlName="user_id" (keypress)="allowOnlyNumbers($event)"
+                placeholder="Ingrese el id del usuario" style="background-color: #FEF7FF;" i18n-placeholder="@@userIdPlaceholder" />
+              <div i18n class="text-danger mt-1"
+                *ngIf="incidenciaForm.get('user_id')?.touched && incidenciaForm.get('user_id')?.invalid">
+                El usuario es requerido.
+              </div>
+            </div>
+            <!-- Descripción del Incidente -->
+            <div class="mb-3">
+              <label i18n for="descripcion" class="form-label">Descripción del incidente</label>
+              <textarea id="descripcion" class="form-control" formControlName="descripcion" rows="3"
+                placeholder="Ingrese la descripción del incidente" style="background-color: #FEF7FF;" (blur)="onDescripcionBlur()"> </textarea>
+              <div i18n class="text-danger mt-1"
+                *ngIf="incidenciaForm.get('descripcion')?.touched && incidenciaForm.get('descripcion')?.invalid">
+                La descripción es requerida.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label i18n for="descripcion" class="form-label">Solución</label>
+              <textarea id="solucion" class="form-control" formControlName="solucion" rows="3"
+                placeholder="Ingrese la solucion del incidente" style="background-color: #FEF7FF;" (blur)="onDescripcionBlur()"> </textarea>
+              <div i18n class="text-danger mt-1"
+                *ngIf="incidenciaForm.get('descripcion')?.touched && incidenciaForm.get('descripcion')?.invalid">
+                La solucion es requerida.
+              </div>
+            </div>
+
+            <!-- Cliente -->
+            <div class="mb-4">
+              <label i18n for="cliente" class="form-label">Cliente</label>
+              <select id="cliente"  (change)="onClientChange($event)" class="form-select" formControlName="cliente" size="5" aria-label="size 3 select example">
+                <option i18n value="" disabled selected>-- Seleccionar --</option>
+                <option *ngFor="let cliente of clients" [value]="cliente.id">
+                  {{ cliente.company_name }}
+                </option>
+              </select>
+            </div>
+
+            <!-- Canal -->
+            <div class="mb-4">
+              <label i18n for="canal" class="form-label">Canal</label>
+              <select id="canal" class="form-control" formControlName="canal" style="background-color: #FEF7FF;">
+                <option i18n value="" disabled selected>-- Seleccionar --</option>
+                <!-- Mostrar Teléfono si es Emprendedor -->
+                <option i18n value="phone" *ngIf="planDataName === 'Emprendedor' || planDataName === 'Empresario' || planDataName === 'Empresario Plus' || planDataName === ''">
+                  Teléfono
+                </option>
+                <!-- Mostrar Email si es Empresario o Empresario Plus -->
+                <option i18n value="email" *ngIf="planDataName === 'Empresario' || planDataName === 'Empresario Plus'">
+                  Email
+                </option>
+                <!-- Mostrar Chat si es Empresario Plus -->
+                <option i18n value="chat" *ngIf="planDataName === 'Empresario Plus'">
+                  Chat
+                </option>
+              </select>
+            </div>
+
+            <div class="d-flex justify-content-between">
+
+              <button i18n (click)="actualizar()" class="btn btn-dark me-2">Actualizar</button>
+              <button i18n (click)="cerrar()" class="btn btn-dark">Cerrar incidencia</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+  </div>
