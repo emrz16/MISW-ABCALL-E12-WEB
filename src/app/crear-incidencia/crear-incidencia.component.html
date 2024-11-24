@@ -20,8 +20,8 @@
             <!-- User id -->
             <div class="mb-3">
               <label i18n for="user_id" class="form-label">Usuario</label>
-              <input type="text" id="user_id" class="form-control" formControlName="user_id" (keypress)="allowOnlyNumbers($event)"
-                placeholder="Ingrese el id del usuario" style="background-color: #FEF7FF;"/>
+                <input type="text" id="user_id" class="form-control" formControlName="user_id" (keypress)="allowOnlyNumbers($event)"
+                placeholder="Ingrese el id del usuario" style="background-color: #FEF7FF;" i18n-placeholder="@@userIdPlaceholder"/>
               <div i18n class="text-danger mt-1"
                 *ngIf="incidenciaForm.get('user_id')?.touched && incidenciaForm.get('user_id')?.invalid">
                 El usuario es requerido.
@@ -65,7 +65,7 @@
             <div class="mb-4">
               <label i18n for="canal" class="form-label">Canal</label>
               <select id="canal" class="form-control" formControlName="canal" style="background-color: #FEF7FF;">
-                <option value="" disabled selected>-- Seleccionar --</option>
+                <option i18n value="" disabled selected>-- Seleccionar --</option>
                 <!-- Mostrar Teléfono si es Emprendedor -->
                 <option i18n value="phone" *ngIf="planDataName === 'Emprendedor' || planDataName === 'Empresario' || planDataName === 'Empresario Plus' || planDataName === ''">
                   Teléfono

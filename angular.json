@@ -43,7 +43,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "localize": ["fr"],
+            "localize": ["fr", "en", "ar", "es"],
             "outputPath": "dist/abcall",
             "index": "src/index.html",
             "browser": "src/main.ts",
