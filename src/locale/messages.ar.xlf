@@ -298,6 +298,14 @@
         <source>Registro</source>
         <target>تسجيل</target>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">33,34</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/agent/agent-login/agent-login.component.html</context>
           <context context-type="linenumber">31,32</context>
         </context-group>
@@ -364,6 +372,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/auth.component.html</context>
           <context context-type="linenumber">23,24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">34,35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8136726409630621604" datatype="html">
@@ -836,6 +852,10 @@
           <context context-type="sourcefile">src/app/crear-incidencia/crear-incidencia.component.html</context>
           <context context-type="linenumber">57,58</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/crear-incidencia/crear-incidencia.component.html</context>
+          <context context-type="linenumber">68,69</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="6254525022265217477" datatype="html">
         <source>Canal</source>
@@ -907,6 +927,26 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/agent/agent-register/agent-register.component.html</context>
           <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2286350694224127745" datatype="html">
+        <source>Cerrar sesion</source>
+        <target>تسجيل الخروج</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8613741909398167343" datatype="html">
+        <source>dashboard</source>
+        <target>لوحة القيادة</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">35,36</context>
         </context-group>
       </trans-unit>
     </body>
