@@ -65,7 +65,7 @@
             <div class="mb-4">
               <label i18n for="canal" class="form-label">Canal</label>
               <select id="canal" class="form-control" formControlName="canal" style="background-color: #FEF7FF;">
-                <option value="" disabled selected>-- Seleccionar --</option>
+                <option i18n value="" disabled selected>-- Seleccionar --</option>
                 <!-- Mostrar Teléfono si es Emprendedor -->
                 <option i18n value="phone" *ngIf="planDataName === 'Emprendedor' || planDataName === 'Empresario' || planDataName === 'Empresario Plus' || planDataName === ''">
                   Teléfono

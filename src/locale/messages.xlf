@@ -226,6 +226,58 @@
           <context context-type="linenumber">83,84</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="1824343322741992092" datatype="html">
+        <source>Registro</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">33,34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/agent/agent-login/agent-login.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/client/client-login/client-login.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2454050363478003966" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8613741909398167343" datatype="html">
+        <source>dashboard</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2286350694224127745" datatype="html">
+        <source>Cerrar sesion</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="5538426115529821685" datatype="html">
         <source>Inicio de sesion de Agente</source>
         <context-group purpose="location">
@@ -292,17 +344,6 @@
           <context context-type="linenumber">28,29</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1824343322741992092" datatype="html">
-        <source>Registro</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/agent/agent-login/agent-login.component.html</context>
-          <context context-type="linenumber">31,32</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/client/client-login/client-login.component.html</context>
-          <context context-type="linenumber">31,32</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="2899352626682663496" datatype="html">
         <source>Recuperar contraseña</source>
         <context-group purpose="location">
@@ -347,13 +388,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/auth.component.html</context>
           <context context-type="linenumber">19,20</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2454050363478003966" datatype="html">
-        <source>Login</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
-          <context context-type="linenumber">23,24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8136726409630621604" datatype="html">
@@ -762,6 +796,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/crear-incidencia/crear-incidencia.component.html</context>
           <context context-type="linenumber">57,58</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/crear-incidencia/crear-incidencia.component.html</context>
+          <context context-type="linenumber">68,69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6254525022265217477" datatype="html">
