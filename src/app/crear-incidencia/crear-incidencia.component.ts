@@ -71,7 +71,7 @@ export class CrearIncidenciaComponent implements OnInit {
       this.incidenciaService.crearIncidencia(nuevaIncidencia).subscribe({
         next: (response) => {
           console.log('Incidencia guardada:', response);
-          this.mensajeExito = 'Incidencia creada exitosamente. id del incidente: ' + response.id;
+          this.mensajeExito = $localize + "Incidencia creada exitosamente. id del incidente:" + response.id;
           
           this.limpiarForm();
 

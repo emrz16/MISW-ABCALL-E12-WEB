@@ -4,16 +4,16 @@
     <img src="assets/images/panda.png" alt="Icono" width="150" height="150" >
   </div>
 
-  <h2>Inicio de sesion de Cliente</h2>
+  <h2 i18n>Inicio de sesion de Cliente</h2>
 
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="form-group">
-      <h5 class="textos">Correo</h5>
+      <h5 i18n class="textos">Correo</h5>
       
       <input type="email" id="email" formControlName="email" class="input-field" placeholder="Correo">
       <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-        <small class="error-message" *ngIf="loginForm.get('email')?.errors?.['required']">Email es requerido.</small>
-        <small class="error-message" *ngIf="loginForm.get('email')?.errors?.['email']">Ingresa un email valido.</small>
+        <small i18n class="error-message" *ngIf="loginForm.get('email')?.errors?.['required']">Email es requerido.</small>
+        <small i18n class="error-message" *ngIf="loginForm.get('email')?.errors?.['email']">Ingresa un email valido.</small>
       </div>
     </div>
 
@@ -21,15 +21,15 @@
       <h5 class="textos">Contraseña</h5>
       <input type="password" id="password" formControlName="password" class="input-field" placeholder="Contraseña" >
       <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-        <small class="error-message" *ngIf="loginForm.get('password')?.errors?.['required']">Contraseña es requerido.</small>
+        <small i18n class="error-message" *ngIf="loginForm.get('password')?.errors?.['required']">Contraseña es requerido.</small>
       </div>
     </div>
 
     <button class="login-button" type="submit" [disabled]="loginForm.invalid">Ingresar</button>
 
     <div class="links">
-      <a href="/clients/register" class="link">Registro</a>
-      <a href="/clients/recover" class="link">Recuperar contraseña</a>
+      <a i18n href="/clients/register" class="link">Registro</a>
+      <a i18n href="/clients/recover" class="link">Recuperar contraseña</a>
     </div>
 
   </form>
