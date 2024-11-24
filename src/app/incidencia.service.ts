@@ -4,6 +4,22 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 
+
+export interface IncidentDetail {
+  id: string;
+  agent_id_creation: string;
+  description: string;
+  date: string; 
+  registration_medium: string;
+  user_id: number;
+  status: string;
+  agent_id_last_update: string;
+  created_at: string; 
+  updated_at: string; 
+  client_id: string;
+}
+
+
 export interface Incidencia {
   agent_id: string;
   description: string;
@@ -13,9 +29,22 @@ export interface Incidencia {
   client_id: string;
 }
 
+export interface IncidenciaUpdate {
+  agent_id: string;
+  description: string;
+  date: string;
+  registration_medium: string;
+  user_id: number;
+  status: string;
+}
+
 export interface IncidentSuggestionResponse{
   incident_id: string,
   description: string,
+  possible_solution: string
+}
+
+export interface IncidentPossibleSolutionResponse{
   possible_solution: string
 }
 
@@ -26,6 +55,7 @@ export class IncidenciaService {
 
   private apiUrl = environment.baseUrl + 'incidents';
   private apiUrlSuggestions = environment.baseUrl + 'incidents/';
+  private apiUrlPossibleSolution = environment.baseUrl + 'incident-solution';
   constructor(private http: HttpClient) { }
 
   // Método para crear una nueva incidencia
@@ -36,6 +66,18 @@ export class IncidenciaService {
       'Authorization': `Bearer ${token}`
     });
     return this.http.post<any>(this.apiUrl, incidencia, {headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  actualizarIncidencia(incidencia: IncidenciaUpdate, id:string): Observable<any> {
+    console.log(incidencia);
+    const token = localStorage.getItem("token");
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<any>(this.apiUrl+"/"+id,incidencia,  {headers})
       .pipe(
         catchError(this.handleError)
       );
@@ -52,28 +94,38 @@ export class IncidenciaService {
       );
   }
 
-  getIncidentPosibleSolution(): Observable<IncidentSuggestionResponse>{
-    const mockResponse: IncidentSuggestionResponse = {
-      incident_id: '12345',
-      description: 'El sistema muestra un error al iniciar sesión.',
-      possible_solution: 'Revisar las credenciales ingresadas o reiniciar la aplicación.',
-    };
+  getIncidentPosibleSolution(incident_description: string): Observable<IncidentPossibleSolutionResponse>{
 
-    return of(mockResponse); // Simula una respuesta como un Observable
-
-
-    /*
     const token = localStorage.getItem("token");
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<IncidentSuggestionResponse>(this.apiUrlSuggestions + "/solution", {headers})
+
+    const body = {
+
+      description: incident_description
+    };
+
+    return this.http.post<IncidentPossibleSolutionResponse>(this.apiUrlPossibleSolution, body,{headers})
       .pipe(
         catchError(this.handleError)
       );
-      */
-
+    
   }
+
+  getIncidentDetail(incidentId: string): Observable<IncidentDetail> {
+    console.log(incidentId);
+    const token = localStorage.getItem("token");
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<any>(this.apiUrl+"/"+incidentId, {headers})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -85,4 +137,6 @@ export class IncidenciaService {
     }
     return throwError('Algo malo sucedió; por favor, intenta de nuevo más tarde.');
   }
+
+
 }

@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col">
+    <div class="col-md-12" style="background-color: white; padding-top: 15px; padding-left: 0px; margin: 10px;">
+      <div class="card shadow-sm">
+        <div class="card-header text-white text-center" style="background-color: #291563;">
+          <h5 i18n>Agente</h5>
+        </div>
+        <div *ngIf="agent_id" class="card-body">
+          <div class="row mb-3">
+            <div class="col">
+              <strong i18n>ID del Agente:</strong>
+              <p class="mb-0">{{ agent_id }}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <strong i18n>Nombre:</strong>
+              <p class="mb-0">{{ agent.name }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height: 200px; padding: 20px;">
+        <button i18n (click)="crearIncidencia()" class="btn btn-dark me-2">Crear incidencia</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="agent_id" class="col">
+    <div class="container mt-4">
+      <div class="card"  >
+        <div i18n class="card-header text-white" style="background-color: #291563;">
+          Incidentes
+        </div>
+        <div style=" height:700px; overflow-y: scroll;">
+        <table *ngIf="incidents.length > 0" class="table table-striped">
+          <thead>
+            <tr>
+              <th i18n>ID</th>
+              <th i18n>Descripción</th>
+              <th i18n>Fecha</th>
+              <th i18n>Estado</th>
+              <th i18n>Última Actualización</th>
+            </tr>
+          </thead>
+          
+            <tbody>
+              <tr *ngFor="let incident of incidents">
+                <td>{{ incident.id }}</td>
+                <td>{{ incident.description }}</td>
+                <td>{{ incident.date }}</td>
+                <td>{{ incident.status }}</td>
+                <td>{{ incident.agent_id_last_update }}</td>
+                <td>
+                  <button i18n (click)="editIncident(incident.id)" class="btn btn-dark me-2">Editar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

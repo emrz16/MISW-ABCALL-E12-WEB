@@ -1,0 +1,99 @@
+/* General Container Styles */
+.crear-agente-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    padding: 20px;
+  }
+  
+  .crear-agente-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 70%;
+    width: 100%;
+  }
+  
+  /* Header Styles */
+  .crear-agente-card h2 {
+    text-align: center;
+    color: #333333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Styles */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #f9f2ff;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  .input-field:focus {
+    border-color: #6200ea;
+    outline: none;
+  }
+  
+  /* Error Message Styles */
+  .form-error {
+    margin-top: 5px;
+  }
+  
+  .form-error small {
+    color: #d32f2f;
+    font-size: 14px;
+  }
+  
+  /* Submit Button */
+  .guardar-button {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #4a235a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .guardar-button:disabled {
+    background-color: #4a235a;
+    cursor: not-allowed;
+  }
+  
+  .guardar-button:hover:not(:disabled) {
+    background-color: #4a235a;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .crear-agente-card {
+      padding: 20px;
+    }
+  
+    .guardar-button {
+      font-size: 16px;
+    }
+  }
+  

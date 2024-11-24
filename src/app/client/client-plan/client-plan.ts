@@ -3,7 +3,7 @@ export interface ClientPlan {
     name: string;
     email: string;
     company_name: string;
-    created_at: string; // Puedes cambiar a Date si deseas manejarlo como objeto de fecha
-    updated_at: string; // Puedes cambiar a Date si deseas manejarlo como objeto de fecha
+    created_at: string; 
+    updated_at: string; 
     plan: string;
 }
