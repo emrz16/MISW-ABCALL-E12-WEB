@@ -1,14 +1,22 @@
 import config from "../fixtures/config.json";
 import LoginPageClient from "./pageObjects/loginClient";
+import LoginPageAgent from "./pageObjects/loginAgent";
+
 
 describe('Módulo de Incidencias', () => {
   beforeEach(() => {
     // Setup común para todos los tests
     const loginPageClient = new LoginPageClient();
+    const loginPageAgent = new LoginPageAgent();
     cy.visit(config.baseUrl + '/clients/login');
     cy.wait(2000);
     loginPageClient.clearLoginForm();
     loginPageClient.login(config.clientEmail, config.clientPassword);
+    cy.wait(1000);
+
+    cy.visit(config.baseUrl + '/agents/login');
+    loginPageAgent.clearLoginForm();
+    loginPageAgent.login("agente@test.com", "securepassword");
     cy.wait(1000);
     cy.visit(config.baseUrl + '/incidents');
     cy.wait(1000);
@@ -18,7 +26,11 @@ describe('Módulo de Incidencias', () => {
     // Llenar el formulario
     cy.get('#user_id').type('12345');
     cy.get('#descripcion').type('Problema con el servicio de internet');
-    cy.get('#canal').select('email');
+    cy.get("#cliente").contains("option", "Compania1").then((option) => {
+      cy.get("#cliente").select(option.val());
+    });
+    cy.get('#canal').select('phone', { force: true });
+
 
     // Enviar el formulario
     cy.get('button[type="submit"]').click();
