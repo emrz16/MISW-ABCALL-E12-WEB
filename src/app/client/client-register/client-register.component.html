@@ -10,26 +10,26 @@
 
     </div>
     
-    <h2>Nuevo Cliente</h2>
+    <h2 i18n>Nuevo Cliente</h2>
 
     <div class="row">
       <form [formGroup]="clienteForm" (ngSubmit)="guardarCliente()">
       <div class="col-md-12">
         <div class="row">
           <div class="form-group col-md-6">
-            <label for="usuario">Usuario</label>
+            <label i18n for="usuario">Usuario</label>
             <input  id="usuario" type="text" formControlName="usuario" class="input-field" placeholder="Usuario" />
             <div class="client-form-validation" *ngIf="clienteForm.get('usuario')?.invalid && clienteForm.get('usuario')?.touched">
-              <small class="error-message" *ngIf="clienteForm.get('usuario')?.errors?.['required']">Usuario es requerido</small>
-              <small class="error-message" *ngIf="clienteForm.get('usuario')?.errors?.['maxlength']">No puede superar los 20 caracteres.</small> 
+              <small i18n class="error-message" *ngIf="clienteForm.get('usuario')?.errors?.['required']">Usuario es requerido</small>
+              <small i18n class="error-message" *ngIf="clienteForm.get('usuario')?.errors?.['maxlength']">No puede superar los 20 caracteres.</small> 
              </div>
           </div>
           <div class="form-group col-md-6">
-            <label for="direccion">Dirección</label>
+            <label i18n for="direccion">Dirección</label>
             <input id="direccion" type="text" formControlName="direccion" class="input-field" placeholder="Dirección" />
             <div class="client-form-validation" *ngIf="clienteForm.get('direccion')?.invalid && clienteForm.get('direccion')?.touched">
-              <small class="error-message" *ngIf="clienteForm.get('direccion')?.errors?.['required']">Direccion es requerido</small>
-              <small class="error-message" *ngIf="clienteForm.get('direccion')?.errors?.['maxlength']">No puede superar los 50 caracteres.</small> 
+              <small i18n class="error-message" *ngIf="clienteForm.get('direccion')?.errors?.['required']">Direccion es requerido</small>
+              <small i18n class="error-message" *ngIf="clienteForm.get('direccion')?.errors?.['maxlength']">No puede superar los 50 caracteres.</small> 
             </div>
              
           </div>
@@ -39,20 +39,20 @@
       <div class="col-md-12">
         <div class="row">
           <div class="form-group col-md-6">
-            <label for="compania">Compañía</label>
+            <label i18n for="compania">Compañía</label>
             <input id="compania" type="text" formControlName="compania" class="input-field" placeholder="Compañía" />
             <div class="client-form-validation" *ngIf="clienteForm.get('compania')?.invalid && clienteForm.get('compania')?.touched">
-              <small class="error-message" *ngIf="clienteForm.get('compania')?.errors?.['required']">Compania es requerido.</small>
-              <small class="error-message" *ngIf="clienteForm.get('compania')?.errors?.['maxlength']">No puede superar los 20 caracteres.</small> 
+              <small i18n class="error-message" *ngIf="clienteForm.get('compania')?.errors?.['required']">Compania es requerido.</small>
+              <small i18n class="error-message" *ngIf="clienteForm.get('compania')?.errors?.['maxlength']">No puede superar los 20 caracteres.</small> 
             </div>
           </div>
           <div class="form-group col-md-6">
-            <label for="contrasena">Contraseña</label>
+            <label i18n for="contrasena">Contraseña</label>
             <input id="contrasena" type="password" formControlName="contrasena" class="input-field" placeholder="Contraseña" />
             <div class="client-form-validation" *ngIf="clienteForm.get('contrasena')?.invalid && clienteForm.get('contrasena')?.touched">
-              <small class="error-message" *ngIf="clienteForm.get('contrasena')?.errors?.['required']">Contraseña es requerido.</small>
-              <small class="error-message" *ngIf="clienteForm.get('contrasena')?.errors?.['minlength']">Contraseña debe tener al menos 8 catactéres.</small> 
-              <small class="error-message" *ngIf="clienteForm.get('contrasena')?.errors?.['maxlength']">No puede superar los 20 caracteres.</small> 
+              <small i18n class="error-message" *ngIf="clienteForm.get('contrasena')?.errors?.['required']">Contraseña es requerido.</small>
+              <small i18n class="error-message" *ngIf="clienteForm.get('contrasena')?.errors?.['minlength']">Contraseña debe tener al menos 8 catactéres.</small> 
+              <small i18n class="error-message" *ngIf="clienteForm.get('contrasena')?.errors?.['maxlength']">No puede superar los 20 caracteres.</small> 
             </div>
           </div>
         </div>
@@ -61,26 +61,26 @@
      <div class="col-md-12">
       <div class="row">
           <div class="form-group col-md-6">
-            <label for="correo">Correo</label>
+            <label i18n for="correo">Correo</label>
             <input id="correo" type="email" formControlName="correo" class="input-field" placeholder="Correo" />
             <div class="client-form-validation" *ngIf="clienteForm.get('correo')?.invalid && clienteForm.get('correo')?.touched">
-              <small class="error-message" *ngIf="clienteForm.get('correo')?.errors?.['required']">Correo es requerido.</small>
-              <small class="error-message" *ngIf="clienteForm.get('correo')?.errors?.['email']">Ingresa un Correo válido.</small>
-              <small class="error-message" *ngIf="clienteForm.get('correo')?.errors?.['maxlength']">No puede superar los 30 caracteres.</small> 
+              <small i18n class="error-message" *ngIf="clienteForm.get('correo')?.errors?.['required']">Correo es requerido.</small>
+              <small i18n class="error-message" *ngIf="clienteForm.get('correo')?.errors?.['email']">Ingresa un Correo válido.</small>
+              <small i18n class="error-message" *ngIf="clienteForm.get('correo')?.errors?.['maxlength']">No puede superar los 30 caracteres.</small> 
             </div>
           </div>
           <div class="form-group col-md-6">
-            <label for="confirmarContrasena">Confirmar Contraseña</label>
+            <label i18n for="confirmarContrasena">Confirmar Contraseña</label>
             <input id="confirmarContrasena" type="password" formControlName="confirmarContrasena" class="input-field" placeholder="Confirmar Contraseña" />
             <div class="client-form-validation" *ngIf="clienteForm.get('confirmarContrasena')?.invalid && clienteForm.get('confirmarContrasena')?.touched">
-              <small class="error-message" *ngIf="clienteForm.get('confirmarContrasena')?.errors?.['required']">Confirmar contraseña es requerido.</small>
-              <small class="error-message" *ngIf="clienteForm.get('confirmarContrasena')?.errors?.['mismatch']">Las contraseñas no coinciden.</small>
+              <small i18n class="error-message" *ngIf="clienteForm.get('confirmarContrasena')?.errors?.['required']">Confirmar contraseña es requerido.</small>
+              <small i18n class="error-message" *ngIf="clienteForm.get('confirmarContrasena')?.errors?.['mismatch']">Las contraseñas no coinciden.</small>
             </div>
           </div>
         </div>
       </div>
   
-        <button type="submit" class="guardar-button" style="margin-top: 20px; width: 20%;;">Guardar</button>
+        <button i18n type="submit" class="guardar-button" style="margin-top: 20px; width: 20%;;">Guardar</button>
       </form>
     </div>
     

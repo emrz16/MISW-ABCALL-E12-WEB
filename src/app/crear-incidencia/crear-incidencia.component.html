@@ -4,7 +4,7 @@
     <div class="col-10">
       <div class="card w-200">
         <div class="card-body">
-          <h2 class="card-title text-center mb-4">Crear Incidente</h2>
+          <h2 i18n class="card-title text-center mb-4">Crear Incidente</h2>
 
           <!-- Mensaje de Éxito -->
           <div *ngIf="mensajeExito" class="alert alert-success" role="alert">
@@ -19,20 +19,20 @@
           <form [formGroup]="incidenciaForm" (ngSubmit)="guardar()">
             <!-- User id -->
             <div class="mb-3">
-              <label for="user_id" class="form-label">Usuario</label>
+              <label i18n for="user_id" class="form-label">Usuario</label>
               <input type="text" id="user_id" class="form-control" formControlName="user_id" (keypress)="allowOnlyNumbers($event)"
                 placeholder="Ingrese el id del usuario" style="background-color: #FEF7FF;"/>
-              <div class="text-danger mt-1"
+              <div i18n class="text-danger mt-1"
                 *ngIf="incidenciaForm.get('user_id')?.touched && incidenciaForm.get('user_id')?.invalid">
                 El usuario es requerido.
               </div>
             </div>
             <!-- Descripción del Incidente -->
             <div class="mb-3">
-              <label for="descripcion" class="form-label">Descripción del incidente</label>
+              <label i18n for="descripcion" class="form-label">Descripción del incidente</label>
               <textarea id="descripcion" class="form-control" formControlName="descripcion" rows="4"
                 placeholder="Ingrese la descripción del incidente" style="background-color: #FEF7FF;" (blur)="onDescripcionBlur()"> </textarea>
-              <div class="text-danger mt-1"
+              <div i18n class="text-danger mt-1"
                 *ngIf="incidenciaForm.get('descripcion')?.touched && incidenciaForm.get('descripcion')?.invalid">
                 La descripción es requerida.
               </div>
@@ -40,7 +40,7 @@
             <div class="mb-3">
               <div> 
                 <div class="row">
-                  <h4>Posible solución (sugerencia IA)</h4>
+                  <h4 i18n>Posible solución (sugerencia IA)</h4>
                 </div>
                 <div class="row">
                   <p>{{ possibleSolution }}</p>
@@ -52,9 +52,9 @@
 
             <!-- Cliente -->
             <div class="mb-4">
-              <label for="cliente" class="form-label">Cliente</label>
+              <label i18n for="cliente" class="form-label">Cliente</label>
               <select id="cliente"  (change)="onClientChange($event)" class="form-select" size="5" aria-label="size 3 select example">
-                <option value="" disabled selected>-- Seleccionar --</option>
+                <option i18n value="" disabled selected>-- Seleccionar --</option>
                 <option *ngFor="let cliente of clients" [value]="cliente.id">
                   {{ cliente.company_name }}
                 </option>
@@ -63,29 +63,29 @@
 
             <!-- Canal -->
             <div class="mb-4">
-              <label for="canal" class="form-label">Canal</label>
+              <label i18n for="canal" class="form-label">Canal</label>
               <select id="canal" class="form-control" formControlName="canal" style="background-color: #FEF7FF;">
                 <option value="" disabled selected>-- Seleccionar --</option>
                 <!-- Mostrar Teléfono si es Emprendedor -->
-                <option value="phone" *ngIf="planDataName === 'Emprendedor' || planDataName === 'Empresario' || planDataName === 'Empresario Plus' || planDataName === ''">
+                <option i18n value="phone" *ngIf="planDataName === 'Emprendedor' || planDataName === 'Empresario' || planDataName === 'Empresario Plus' || planDataName === ''">
                   Teléfono
                 </option>
                 <!-- Mostrar Email si es Empresario o Empresario Plus -->
-                <option value="email" *ngIf="planDataName === 'Empresario' || planDataName === 'Empresario Plus'">
+                <option i18n value="email" *ngIf="planDataName === 'Empresario' || planDataName === 'Empresario Plus'">
                   Email
                 </option>
                 <!-- Mostrar Chat si es Empresario Plus -->
-                <option value="chat" *ngIf="planDataName === 'Empresario Plus'">
+                <option i18n value="chat" *ngIf="planDataName === 'Empresario Plus'">
                   Chat
                 </option>
               </select>
             </div>
 
             <div class="d-flex justify-content-between">
-              <button type="submit" class="btn" style="background-color: #21005D; color: white;" [disabled]="incidenciaForm.invalid">
+              <button i18n type="submit" class="btn" style="background-color: #21005D; color: white;" [disabled]="incidenciaForm.invalid">
                 Guardar
               </button>
-              <button type="button" (click)="cancelar()" class="btn" style="background-color: #21005D; color: white;" >
+              <button i18n  type="button" (click)="cancelar()" class="btn" style="background-color: #21005D; color: white;" >
                 Cancelar
               </button>
             </div>

@@ -3,11 +3,11 @@
 
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="form-group">
-      <label for="email">Email</label>
+      <label i18n for="email">Email</label>
       <input type="email" id="email" formControlName="email">
       <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-        <small *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
-        <small *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email.</small>
+        <small i18n *ngIf="loginForm.get('email')?.errors?.['required']">Email is required.</small>
+        <small i18n *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email.</small>
       </div>
     </div>
 
@@ -15,12 +15,12 @@
       <label for="password">Password</label>
       <input type="password" id="password" formControlName="password">
       <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-        <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
-        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</small>
+        <small i18n *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+        <small i18n *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</small>
       </div>
     </div>
 
-    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    <button i18n type="submit" [disabled]="loginForm.invalid">Login</button>
   </form>
 
   <div *ngIf="error" class="error-message">
