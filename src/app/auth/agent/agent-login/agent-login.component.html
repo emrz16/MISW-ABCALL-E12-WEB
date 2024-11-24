@@ -8,7 +8,7 @@
 
   <form [formGroup]="agentForm" (ngSubmit)="login()">
     <div class="form-group">
-      <h5 class="textos">Correo</h5>
+      <h5 i18n class="textos">Correo</h5>
       
       <input type="email" id="email" formControlName="email" class="input-field" placeholder="Correo">
       <div *ngIf="agentForm.get('email')?.invalid && agentForm.get('email')?.touched">
@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-group">
-      <h5 class="textos">Contraseña</h5>
+      <h5 i18n class="textos">Contraseña</h5>
       <input type="password" id="password" formControlName="password" class="input-field" placeholder="Contraseña" >
       <div *ngIf="agentForm.get('password')?.invalid && agentForm.get('password')?.touched">
         <small i18n class="error-message" *ngIf="agentForm.get('password')?.errors?.['required']">Contraseña es requerido.</small>

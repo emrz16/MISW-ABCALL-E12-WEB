@@ -91,11 +91,25 @@
           <context context-type="linenumber">12,14</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="5357661269973482487" datatype="html">
+        <source>Nombre</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/agent/agent-register/agent-register.component.html</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="5573296565168630550" datatype="html">
         <source>El nombre es requerido.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/agent/agent-register/agent-register.component.html</context>
           <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4868888201950564133" datatype="html">
+        <source>Correo Electrónico</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/agent/agent-register/agent-register.component.html</context>
+          <context context-type="linenumber">24,25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5574779977432655670" datatype="html">
@@ -117,6 +131,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/agent/agent-register/agent-register.component.html</context>
           <context context-type="linenumber">35,36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/agent/agent-login/agent-login.component.html</context>
+          <context context-type="linenumber">21,22</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/client/client-register/client-register.component.html</context>
@@ -213,6 +231,21 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/agent/agent-login/agent-login.component.html</context>
           <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6597520566647669940" datatype="html">
+        <source>Correo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/agent/agent-login/agent-login.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/client/client-login/client-login.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/client/client-register/client-register.component.html</context>
+          <context context-type="linenumber">64,65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1950946312148176755" datatype="html">
@@ -328,17 +361,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/client/client-login/client-login.component.html</context>
           <context context-type="linenumber">7,9</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6597520566647669940" datatype="html">
-        <source>Correo</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/client/client-login/client-login.component.html</context>
-          <context context-type="linenumber">11,12</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/client/client-register/client-register.component.html</context>
-          <context context-type="linenumber">64,65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3391728961398713723" datatype="html">
@@ -691,6 +713,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/crear-incidencia/crear-incidencia.component.html</context>
           <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="userIdPlaceholder" datatype="html">
+        <source>Ingrese el id del usuario</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/crear-incidencia/crear-incidencia.component.html</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2642575258675089831" datatype="html">
