@@ -28,13 +28,13 @@
     <button i18n class="login-button" type="submit" [disabled]="agentForm.invalid">Ingresar</button>
 
     <div class="links">
-      <a i18n href="/agents/register" class="link">Registro</a>
-      <a i18n href="/agents/recover" class="link">Recuperar contraseña</a>
+      <a i18n [routerLink]="['/agents/register']" class="link">Registro</a>
+      <a i18n [routerLink]="['/agents/recover']" class="link">Recuperar contraseña</a>
     </div>
 
   </form>
-      
-  
+
+
 
 
 </div>
