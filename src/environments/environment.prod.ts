@@ -1,5 +1,5 @@
 const baseUrl =
- 'http://34.8.156.167/';
+ 'http://35.244.171.63/';
 
 export const environment = {
  production: true,

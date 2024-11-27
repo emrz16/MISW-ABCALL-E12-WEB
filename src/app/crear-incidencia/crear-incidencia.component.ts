@@ -123,10 +123,10 @@ export class CrearIncidenciaComponent implements OnInit {
 
   getTokenAndClientId() {
     this.token = localStorage.getItem('token');
-    this.client_id = sessionStorage.getItem('client_id');
+    //this.client_id = sessionStorage.getItem('client_id');
     this.agent_id = localStorage.getItem('agent_id');
    
-    if(this.token === null || this.agent_id === null) {
+    if(this.token === null || this.agent_id === null|| this.agent_id === '' ) {
       this.toastr.error('No se ha iniciado sesión', 'Error');
       this.router.navigate(['agents/login']);
     }
